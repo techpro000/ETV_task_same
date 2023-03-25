@@ -13,7 +13,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
-            abiFilters 'armeabi', 'armeabi-v7a'
+//            abiFilters 'armeabi-v7a'
+            moduleName "libserial_port"
         }
     }
 
@@ -40,17 +41,25 @@ android {
         }
     }
 
-    repositories {
-        flatDir {
-            dirs 'libs'
+//    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+//    }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
         }
     }
 
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
+    ndkVersion '22.1.7171670'
 
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
@@ -79,7 +88,6 @@ dependencies {
     //Socket通讯框架
     implementation 'org.java-websocket:Java-WebSocket:1.4.1'
     //网络请求框架
-    //implementation 'com.gitee.shotter:HttpUtil:1.0.9'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
     //litepal 数据库
     implementation 'org.litepal.guolindev:core:3.2.1'
