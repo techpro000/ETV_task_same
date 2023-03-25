@@ -23,7 +23,6 @@ import com.etv.db.DbBggImageUtil;
 import com.etv.db.DbStatiscs;
 import com.etv.http.SameScreenHelper;
 import com.etv.service.listener.SysSettingAllViewInfoListener;
-import com.etv.service.parsener.MapLocationParsener;
 import com.etv.service.parsener.TcpParsener;
 import com.etv.service.view.TcpHartStatuesListener;
 import com.etv.service.view.TcpPowerOnOffListener;
@@ -855,7 +854,7 @@ public class TcpSocketService extends Service implements SocketStatuesListener {
 
     //=============百度地图定位==============
     public void startLocationService(int tag) {
-        MapLocationParsener.getInstance(TcpSocketService.this).startLocationService(tag);
+//        MapLocationParsener.getInstance(TcpSocketService.this).startLocationService(tag);
     }
 
     private void updateImageToWeb(Intent intent) {
