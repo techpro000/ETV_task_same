@@ -10,11 +10,11 @@ public class CmdObserver {
 
     private final MutableLiveData<CmdData> liveData = new MutableLiveData<>();
 
-    private CmdObserver(){
+    private CmdObserver() {
 
     }
 
-    public static CmdObserver get(){
+    public static CmdObserver get() {
         return Holder.OBSERVER;
     }
 

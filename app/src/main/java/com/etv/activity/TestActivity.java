@@ -52,7 +52,7 @@ public class TestActivity extends Activity {
 
     public void sendPortMessage() {
         String message = "{" + System.currentTimeMillis() + "}";
-        mSerialPort.send(message);
+        mSerialPort.send(message, "");
     }
 
     @Override

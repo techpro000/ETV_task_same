@@ -120,8 +120,8 @@ public class StartActivity extends FragmentActivity {
     }
 
     private void startGoToView() {
-        startActivity(new Intent(StartActivity.this, TestActivity.class));
-//        startActivity(new Intent(StartActivity.this, SplashLowActivity.class));
+//        startActivity(new Intent(StartActivity.this, TestActivity.class));
+        startActivity(new Intent(StartActivity.this, SplashLowActivity.class));
         finish();
     }
 

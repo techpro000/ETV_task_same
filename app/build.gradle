@@ -19,12 +19,12 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file('../yisheng.jks')
-            storePassword 'yisheng888'
-            keyAlias 'yisheng'
-            keyPassword 'yisheng888'
-        }
+//        debug {
+//            storeFile file('../yisheng.jks')
+//            storePassword 'yisheng888'
+//            keyAlias 'yisheng'
+//            keyPassword 'yisheng888'
+//        }
         release {
             storeFile file('../yisheng.jks')
             storePassword 'yisheng888'

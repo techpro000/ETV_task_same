@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 
 import com.etv.activity.MainActivity;
 import com.etv.config.AppConfig;
@@ -26,6 +27,7 @@ import com.etv.util.ProjectorUtil;
 import com.etv.util.SharedPerManager;
 import com.etv.util.TimerDealUtil;
 import com.etv.util.rxjava.AppStatuesListener;
+import com.etv.util.serialport.SerialPort;
 import com.etv.util.system.LeaderBarUtil;
 import com.etv.util.system.LightUtil;
 
@@ -170,12 +172,24 @@ public class EtvService extends Service {
     }
 
     UdpParnsener udpParnsener;
+    SerialPort serialPortUtil;
 
     private void initUdp() {
+        if (AppConfig.MESSAGE_TYPE == AppConfig.MESSAGE_TYPE_SERIALPORT) {
+            initSerialPortUtil();
+            return;
+        }
         if (udpParnsener == null) {
             udpParnsener = new UdpParnsener();
         }
         udpParnsener.initUdp();
+    }
+
+    private void initSerialPortUtil() {
+        if (serialPortUtil == null) {
+            serialPortUtil = new SerialPort(EtvService.this);
+        }
+        serialPortUtil.receive(handler);
     }
 
     /**
@@ -185,10 +199,21 @@ public class EtvService extends Service {
      * @param sendIp
      */
     public void sendUdpMessage(String message, String sendIp) {
+        if (AppConfig.MESSAGE_TYPE == AppConfig.MESSAGE_TYPE_SERIALPORT) {
+            seneMessageSerialPort(message, sendIp);
+            return;
+        }
         if (udpParnsener == null) {
             return;
         }
         udpParnsener.sendUdpMessageByIp(sendIp, message);
+    }
+
+    private void seneMessageSerialPort(String message, String sendIp) {
+        if (serialPortUtil == null) {
+            return;
+        }
+        serialPortUtil.send(message, sendIp);
     }
 
     /***
@@ -246,6 +271,10 @@ public class EtvService extends Service {
         }
         if (udpParnsener != null) {
             udpParnsener.onDestroyParsener();
+        }
+        if (serialPortUtil != null) {
+            serialPortUtil.release();
+            serialPortUtil = null;
         }
         TimerDealUtil.getInstance().onDestroyTimer();
         LightUtil.StopLightUtil();

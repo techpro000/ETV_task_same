@@ -9,6 +9,10 @@ public class AppConfig {
     public static final int CONSUMER_CNIN_MONEY = 1; //长江证券项目
     public static final int CONSUMER_TYPE = CONSUMER_CNIN_MONEY;
 
+    public static final int MESSAGE_TYPE_UDP = 0;
+    public static final int MESSAGE_TYPE_SERIALPORT = 1;
+    public static final int MESSAGE_TYPE = MESSAGE_TYPE_SERIALPORT;
+
     //用来检测当前开机时间是否是正常得时间
     public static long TIME_CHECK_POWER_REDUCE = 20211230101010L;
 

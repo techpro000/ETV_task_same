@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 
+import com.etv.config.AppConfig;
 import com.etv.listener.VideoPlayListener;
 import com.etv.service.EtvService;
 import com.etv.util.MyLog;
@@ -130,19 +131,21 @@ public class UDPPlayerView extends RelativeLayout {
                 }
                 int pos = cmdData.pos;
                 int offset = Math.abs(cur - pos);
-                long currtime = System.currentTimeMillis();
-                String compareStr = "s/r===> " + cmdData.time + "|" + currtime + " ===> " + (currtime - cmdData.time) + " ===main/curr->" + pos + "|" + cur + " ----> " + offset;
+//                long currtime = System.currentTimeMillis();
+//                String compareStr = "s/r===> " + cmdData.time + "|" + currtime + " ===> " + (currtime - cmdData.time) + " ===main/curr->" + pos + "|" + cur + " ----> " + offset;
                 if (offset > 59) {
                     EtvService.getInstance().sendUdpMessage(Command.buildSeekProgressCmd(cmdData.path, pos, cmdData.secenId), UDPSocket.ALL_HOST);
                 }
-                System.out.println(compareStr);
-                MyLog.printUdpLogToSd("udp-progress.txt", compareStr + "\r\n");
+//                System.out.println(compareStr);
+//                MyLog.printUdpLogToSd("udp-progress.txt", compareStr + "\r\n");
                 break;
             case CmdAct.CMD_SEEK_PROGRESS:
-                long curtime = System.currentTimeMillis();
+
                 if (!isRelease && cmdData.path.equals(curPath)) {
                     mediaPlayer.seekTo(cmdData.pos);
-                    MyLog.printUdpLogToSd("udp-sync.txt", "s/r===> " + cmdData.time + "|" + curtime + " ===> " + (curtime - cmdData.time) + " ===> " + cmdData.pos + "\r\n");
+                    //122
+//                    long curtime = System.currentTimeMillis();
+//                    MyLog.printUdpLogToSd("udp-sync.txt", "s/r===> " + cmdData.time + "|" + curtime + " ===> " + (curtime - cmdData.time) + " ===> " + cmdData.pos + "\r\n");
                 }
                 break;
         }

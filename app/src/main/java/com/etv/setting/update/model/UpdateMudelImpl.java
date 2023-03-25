@@ -107,6 +107,9 @@ public class UpdateMudelImpl implements UpdateMudel {
     }
 
     private void parsenerUpdateInfoData(String data) {
+        if (TextUtils.isEmpty(data)) {
+            return;
+        }
         listUpdateWeb.clear();
         try {
             JSONObject jsonData = new JSONObject(data);

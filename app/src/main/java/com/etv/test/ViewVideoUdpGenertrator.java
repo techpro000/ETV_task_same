@@ -72,7 +72,7 @@ public class ViewVideoUdpGenertrator extends Generator {
         super(context, x, y, width, height);
         this.width = width;
         this.height = height;
-        MyLog.cdl("=====视频区域得坐标====" + x + " / " + y + " / " + width + " /" + height);
+        MyLog.cdl("=====视频区域得坐标==ViewVideoUdpGenertrator==" + x + " / " + y + " / " + width + " /" + height);
         this.mediAddEntity = mediAddEntity;
         this.ifViewZero = ifViewZero;
         this.screenPosition = screenPosition;

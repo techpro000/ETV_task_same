@@ -65,7 +65,7 @@ public class ViewVideoSurfaceGenertrator extends Generator {
         super(context, x, y, width, height);
         this.width = width;
         this.height = height;
-        MyLog.cdl("=====视频区域得坐标====" + x + " / " + y + " / " + width + " /" + height);
+        MyLog.cdl("=====视频区域得坐标==ViewVideoSurfaceGenertrator==" + x + " / " + y + " / " + width + " /" + height);
         this.videoLists = videoLists;
         this.cpListEntity = cpListEntity;
         this.screenPosition = screenPosition;

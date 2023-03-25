@@ -2,7 +2,13 @@ package com.etv.util.serialport;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+
+import com.etv.udp.util.ParseMessage;
+import com.etv.util.MyLog;
+import com.udpsync.Command;
+import com.udpsync.bean.CmdData;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -46,7 +52,7 @@ public class SerialPort {
         mFileOutputStream = new FileOutputStream(mFd);
     }
 
-    public void send(String path) {
+    public void send(String path, String ipaddress) {
         try {
             byte[] bytes = (path).getBytes("UTF-8");
             logSerPortMessage(new String(bytes));
@@ -58,10 +64,12 @@ public class SerialPort {
         }
     }
 
-
     private void logSerPortMessage(String s) {
         Log.e("cdl", "logSerPortMessage=" + s);
     }
+    // 31 189
+    // 2023-03-25 14:11:31.332 3472-3531/com.ys.etv E/cdl: lo
+
 
     ReadThread mReadThread;
 
@@ -132,9 +140,14 @@ public class SerialPort {
                         stringBuilder.append("{");
                     } else if (bufferInfo.startsWith("}")) {
                         stringBuilder.append("}");
-                        logSerPortMessage("解析完成=" + stringBuilder.toString());
+                        logSerPortMessage("解析完成000=" + stringBuilder.toString());
+                        String dataStr = stringBuilder.toString();
+                        CmdData cmdData = Command.getData(dataStr);
+                        if (cmdData != null) {
+                            ParseMessage.parsenerMessageUdp(cmdData);
+                        }
                     } else {
-                        logSerPortMessage("解析数据=" + bufferInfo);
+//                        logSerPortMessage("解析数据=" + bufferInfo);
                         stringBuilder.append(bufferInfo);
                     }
                 } catch (Exception e) {
