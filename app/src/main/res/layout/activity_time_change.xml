@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <!--顶部退出按钮-->
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/setting_fragment_lin"
+        android:padding="@dimen/dimen_10">
+
+        <TextView
+            android:id="@+id/tv_dev_setting"
+            style="@style/setting_title_desc"
+            android:text="@string/time_setting" />
+
+        <View style="@style/setting_current_view_style" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="@string/close_time"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:text="@string/open_time"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/monday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/thuesday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/wedsday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/thurday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/friday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/satuday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/sunday" />
+
+                <TextView
+                    style="@style/power_on_off_tv"
+                    android:text="@string/all_choice" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_time_off"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_trans_chooice_style"
+                    android:gravity="center"
+                    android:text="18:30"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btn_time_on"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_trans_chooice_style"
+                    android:gravity="center"
+                    android:text="06:30"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_mon"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_tue"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_wed"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_thu"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_fri"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_sta"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_sun"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout style="@style/power_on_off_rela">
+
+                    <CheckBox
+                        android:id="@+id/ck_all"
+                        android:layout_width="@dimen/dimen_40"
+                        android:layout_height="@dimen/dimen_40"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <!--底部确认按钮-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/btn_del"
+                    android:layout_width="@dimen/dimen_100"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/btn_fouces_error_style"
+                    android:text="@string/delete"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="@dimen/dimen_100"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_15"
+                    android:background="@drawable/btn_fouces_style"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_cacel"
+                    android:layout_width="@dimen/dimen_100"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_15"
+                    android:background="@drawable/btn_fouces_style"
+                    android:text="@string/cancel"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

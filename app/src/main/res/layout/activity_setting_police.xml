@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="700dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_police_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/one_key_police"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/app_txt_color" />
+
+        <!--=====一键报警开关============-->
+
+        <com.ys.model.view.SettingSwitchView
+            android:id="@+id/switch_police_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_left_switch="@drawable/icon_police_one"
+            app:txt_content_switch=""
+            app:txt_title_switch="@string/one_key_police" />
+
+        <com.ys.model.view.SettingClickView
+            android:id="@+id/btn_video_recorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_txt_right="@string/setting_default"
+            app:img_left="@drawable/icon_police_one"
+            app:txt_content=""
+            app:txt_title="@string/video_recorder" />
+
+        <ListView
+            android:id="@+id/lv_pilice_list"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="@dimen/dimen_20" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

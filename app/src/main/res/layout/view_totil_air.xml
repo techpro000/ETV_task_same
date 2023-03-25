@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Temp"
+            android:textColor="@color/grey"
+            android:textSize="25sp" />
+
+        <RelativeLayout
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/iv_animal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/icon_group_totil" />
+
+            <TextView
+                android:id="@+id/tv_num_totil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="23dp"
+                android:text="Temp"
+                android:textColor="@color/blue_air"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/dimen_15"
+                android:text="Temp"
+                android:textColor="@color/grey"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

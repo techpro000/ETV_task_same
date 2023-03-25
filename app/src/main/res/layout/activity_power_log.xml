@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <TextView
+            android:id="@+id/tv_hiddle_title"
+            style="@style/setting_title_desc"
+            android:text="开关机日志" />
+
+        <ListView
+            android:id="@+id/list_hiddle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="@dimen/dimen_15"
+            android:paddingLeft="@dimen/dimen_50"
+            android:paddingRight="@dimen/dimen_50" />
+    </LinearLayout>
+</RelativeLayout>

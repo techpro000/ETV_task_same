@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <solid android:color="@color/terminal_play_down" />
+    <corners android:radius="@dimen/main_rela_dis" />
+    <stroke
+        android:width="@dimen/main_chooice_width"
+        android:color="@color/main_chooice_color" />
+
+</shape>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_line_screen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/ter_icon_screen"
+                app:txt_content=""
+                app:txt_title="@string/play_more" />
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/general_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/icon_auto_power"
+                app:txt_content=""
+                app:txt_title="@string/general_setting" />
+
+            <!--==============控制中心=============================================-->
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_control_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/icon_control_center"
+                app:txt_content=""
+                app:txt_title="@string/control_center" />
+
+
+            <!--==============屏幕设置=============================================-->
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_screen_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/ter_icon_dev"
+                app:txt_content=""
+                app:txt_title="@string/screen_size" />
+
+            <!--==============显示设置=============================================-->
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_screen_show_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/ter_icon_dev"
+                app:txt_content=""
+                app:txt_title="@string/screen_show" />
+
+            <!--==============守护进程=============================================-->
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_guardian_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/hiddle_protect"
+                app:txt_content=""
+                app:txt_title="@string/daemon" />
+
+
+            <!--=====版本信息============-->
+            <LinearLayout
+                style="@style/termnal_setting_lin_hro"
+                android:layout_marginLeft="@dimen/dimen_30">
+
+                <ImageView
+                    style="@style/termnal_setting_image"
+                    android:src="@drawable/ter_icon_version" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_40"
+                    android:text="@string/version_information"
+                    android:textColor="@color/app_txt_color"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_version_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:textColor="@color/app_txt_color"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btn_goto_hiddle"
+                    style="@style/termnal_setting_button"
+                    android:text="@string/setting_default"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <View style="@style/setting_current_view_style" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

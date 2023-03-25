@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.etv.view.layout.video.rtsp.RtspSurfaceView
+        android:id="@+id/surfaceView_rtsp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/lin_wait_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:background="@drawable/rect_circle"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDrawable="@drawable/dialog_loading"
+            android:indeterminateOnly="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:text="Loading..."
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_rtsp_click"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="1000dp"
+        android:layout_height="500dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rect_circle_white"
+        android:padding="@dimen/dimen_20">
+
+        <GridView
+            android:id="@+id/lv_file"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:horizontalSpacing="15dp"
+            android:numColumns="6" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

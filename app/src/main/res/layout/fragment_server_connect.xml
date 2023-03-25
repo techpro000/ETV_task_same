@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--用来封装所有的View-->
+        <LinearLayout
+            android:id="@+id/lin_net_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="vertical">
+
+            <!--服务器地址-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/server_address" />
+
+                <!--android:nextFocusUp="@id/btn_line_log"-->
+                <!--android:nextFocusDown="@+id/btn_modfy_port"-->
+                <Button
+                    android:id="@+id/btn_server_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_fouces_trans_style"
+                    android:gravity="left|center_vertical"
+                    android:hint="请输入合法IP或域名"
+                    android:singleLine="true"
+                    android:text="192.168.0.0"
+                    android:textAllCaps="false"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/control_port" />
+
+                <!--android:nextFocusUp="@id/btn_server_address"-->
+                <!--android:nextFocusDown="@+id/btn_username"-->
+                <Button
+                    android:id="@+id/btn_modfy_port"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_fouces_trans_style"
+                    android:gravity="left|center_vertical"
+                    android:hint="请输入合法端口"
+                    android:singleLine="true"
+                    android:text="8899"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+            <!--===========用户名字======-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/username" />
+
+                <!--android:nextFocusUp="@id/btn_modfy_port"-->
+                <!--android:nextFocusDown="@+id/bt_save_line"-->
+                <Button
+                    android:id="@+id/btn_username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/btn_fouces_trans_style"
+                    android:gravity="left|center_vertical"
+                    android:hint="服务器登录用户名"
+                    android:singleLine="true"
+                    android:textAllCaps="false"
+                    android:textColor="@color/grey"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView style="@style/internet_server_txt" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username_tips"
+                    android:textColor="@color/red"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/download_link" />
+
+                <TextView
+                    android:id="@+id/tv_download_link"
+                    style="@style/dev_time_txt_style"
+                    android:text="/sdcard/etv" />
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/line_type" />
+
+                <TextView
+                    android:id="@+id/tv_line_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:textColor="@color/app_txt_color"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/reboot_start"
+                    android:textColor="@color/red"
+                    android:textSize="14sp" />
+
+
+                <com.ys.model.view.MyToggleButton
+                    android:id="@+id/item_toggle_socket"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_save_line"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dimen_30"
+                android:background="@drawable/btn_fouces_style"
+                android:text="@string/connect"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:paddingLeft="@dimen/dimen_40"
+                android:paddingRight="@dimen/dimen_40">
+
+                <!--自动连接，连接记录-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/btn_back_default"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_weight="1.0" />
+
+                    <Button
+                        android:id="@+id/btn_line_by_hand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/btn_fouces_style"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/connect_auto"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

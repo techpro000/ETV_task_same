@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_15">
+
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="升级说明"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_test"
+        android:layout_marginTop="@dimen/dimen_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_update_desc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/menu_bg_color"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

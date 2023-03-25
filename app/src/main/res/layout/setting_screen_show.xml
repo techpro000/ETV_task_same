@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="700dp"
+        android:layout_height="600dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/write_yj">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/screen_show"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/net_sync_server"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_txt_color" />
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_info_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:img_left_switch="@drawable/icon_auto_power"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/info_from" />
+
+
+            <!--双屏异显-->
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_double_show_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/icon_double_screen"
+                app:txt_content=""
+                app:txt_title="@string/double_screen_type" />
+
+            <!--副屏图片旋转角度-->
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_double_image_roate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/icon_double_screen"
+                app:txt_content=""
+                app:txt_title="@string/double_image_roate" />
+
+            <!--截图上传质量-->
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_capture_quetity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/icon_pic_setting"
+                app:txt_content=""
+                app:txt_title="@string/capture_quetity" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

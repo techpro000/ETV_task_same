@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+
+    <ScrollView
+        style="@style/setting_fragment_lin"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect_circle"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/control_center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_txt_color" />
+
+
+            <!--==============是否从服务器拉背景图数据=============================================-->
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_main_bgg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:img_left_switch="@mipmap/icon_bgg_update"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/update_web_bgg" />
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_task_same"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:img_left_switch="@drawable/ter_icon_screen"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/task_same" />
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_video_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:img_left_switch="@mipmap/icon_bgg_update"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/video_more_size" />
+
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_plan_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:img_left_switch="@mipmap/hiddle_protect"
+                app:txt_content_switch="@string/auto_clear_cache"
+                app:txt_title_switch="@string/plan_no_person" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

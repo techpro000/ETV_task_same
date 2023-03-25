@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/setting_fragment_lin"
+        android:padding="@dimen/dimen_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dimen_50"
+            android:paddingRight="@dimen/dimen_50">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="@string/type"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/model"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/name"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/play_week"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/start_time"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/end_time"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/send_time"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="@string/deal_model"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_pro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:paddingLeft="@dimen/dimen_50"
+            android:paddingRight="@dimen/dimen_50"
+            android:paddingBottom="@dimen/dimen_15" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_clear_pro"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/dimen_15"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:background="@drawable/btn_fouces_style"
+        android:text="@string/clear"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/iv_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_150"
+            android:layout_height="@dimen/dimen_150"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/no_data" />
+
+        <TextView
+            android:id="@+id/tv_no_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/grey"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

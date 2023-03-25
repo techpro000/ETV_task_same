@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <TextView
+            android:id="@+id/tv_devices_setting"
+            style="@style/setting_title_desc"
+            android:text="内存信息" />
+
+        <RelativeLayout style="@style/setting_relative">
+
+            <TextView
+                style="@style/setting_current_text_style"
+                android:text="    总容量" />
+
+            <TextView
+                android:id="@+id/tv_storage_status"
+                style="@style/setting_current_text_style"
+                android:layout_centerHorizontal="true"
+                android:text="8G" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/setting_relative">
+
+            <TextView
+                style="@style/setting_current_text_style"
+                android:text="@string/inside_available" />
+
+            <TextView
+                android:id="@+id/tv_storage_available"
+                style="@style/setting_current_text_style"
+                android:layout_centerHorizontal="true"
+                android:text="8G" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/customProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_below="@+id/tv_storage_value"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:progressDrawable="@drawable/progressbar" />
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="20dp"></View>
+
+        <RelativeLayout style="@style/setting_relative">
+
+            <TextView
+                style="@style/setting_current_text_style"
+                android:text="@string/external_storage" />
+
+            <TextView
+                android:id="@+id/tv_external_storage"
+                style="@style/setting_current_text_style"
+                android:layout_centerHorizontal="true"
+                android:text="0G" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/setting_relative">
+
+            <TextView
+                style="@style/setting_current_text_style"
+                android:text="@string/externally_available" />
+
+            <TextView
+                android:id="@+id/tv_externally_available"
+                style="@style/setting_current_text_style"
+                android:layout_centerHorizontal="true"
+                android:text="0G" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/externallyProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_below="@+id/tv_storage_value"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:progressDrawable="@drawable/progressbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:padding="@dimen/dimen_20">
+
+            <Button
+                android:id="@+id/btn_clear_sdcard"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_fouces_style"
+                android:text="清理内存"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_file_manager"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_fouces_style"
+                android:text="文件管理"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+

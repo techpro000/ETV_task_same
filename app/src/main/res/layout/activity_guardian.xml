@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/guardian_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/net_sync_server"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="( 您的内存小于2G )"
+                android:textColor="@color/red"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:paddingBottom="@dimen/dimen_15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--==============开启状态=============================================-->
+
+                <com.ys.model.view.SettingSwitchView
+                    android:id="@+id/switch_statues"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:img_left_switch="@drawable/ter_icon_dev"
+                    app:txt_content_switch=""
+                    app:txt_title_switch="@string/guardian_statues" />
+
+                <!--=======================开机守护===================-->
+
+                <com.ys.model.view.SettingSwitchView
+                    android:id="@+id/switch_open_power"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:img_left_switch="@drawable/icon_auto_power"
+                    app:txt_content_switch=""
+                    app:txt_title_switch="@string/boot_up" />
+
+
+                <!--===================硬件加速=================================-->
+
+                <com.ys.model.view.SettingSwitchView
+                    android:id="@+id/switch_load_speed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:img_left_switch="@drawable/icon_auto_power"
+                    app:txt_content_switch=""
+                    app:txt_title_switch="@string/hardware_speedup" />
+
+                <!--=======================守护时间===================-->
+
+                <com.ys.model.view.SettingClickView
+                    android:id="@+id/btn_modify_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:btn_txt_right="@string/setting_default"
+                    app:img_left="@drawable/time"
+                    app:txt_content=""
+                    app:txt_title="@string/guardian_time" />
+
+                <!--==============设备ID=============================================-->
+
+                <com.ys.model.view.SettingClickView
+                    android:id="@+id/btn_uninstall_guardian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:btn_txt_right="@string/uninstall"
+                    app:img_left="@drawable/icon_uninstall"
+                    app:txt_content=""
+                    app:txt_title="@string/version_num" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

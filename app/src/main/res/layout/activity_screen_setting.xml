@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="700dp"
+            android:layout_height="600dp"
+            android:background="@drawable/write_yj"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <com.ys.model.view.SettingSwitchView
+                    android:id="@+id/switch_open_power"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:img_left_switch="@drawable/ter_icon_screen"
+                    app:txt_content_switch=""
+                    app:txt_title_switch="@string/back_setting" />
+
+                <com.ys.model.view.SettingClickView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:btn_txt_right="@string/setting_default"
+                    app:img_left="@drawable/storage"
+                    app:txt_content=""
+                    app:txt_title="@string/screen_roate_num" />
+
+                <!--============亮度调节====================-->
+
+                <com.ys.model.view.SettingSeekBarView
+                    android:id="@+id/seek_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_100"
+                    app:img_left_seekbar="@drawable/storage"
+                    app:txt_content_seekbar="90"
+                    app:txt_title_seekbar="@string/light_setting" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

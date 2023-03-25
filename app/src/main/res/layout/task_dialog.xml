@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30sp">
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rect_circle"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_10">
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="50dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:gravity="center"-->
+                <!--android:text="节目"-->
+                <!--android:textColor="@color/grey"-->
+                <!--android:textSize="16sp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_pro_num"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_marginLeft="@dimen/dimen_5"-->
+                <!--android:text="1/2"-->
+                <!--android:textColor="@color/grey"-->
+                <!--android:textSize="16sp" />-->
+
+        <!--</LinearLayout>-->
+
+        <Button
+            android:id="@+id/btn_first"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/btn_fouces_error_style"
+            android:text="上一个节目"
+            android:textColor="@color/bgg_white" />
+
+        <Button
+            android:id="@+id/btn_dialog_yes"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:background="@drawable/btn_fouces_error_style"
+            android:text="下一个节目"
+            android:textColor="@color/bgg_white" />
+
+        <Button
+            android:id="@+id/btn_dialog_no"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:background="@drawable/btn_fouces_style"
+            android:text="退出"
+            android:textColor="@color/bgg_white" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

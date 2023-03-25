@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <!-- 填充颜色 -->
+            <solid android:color="@color/white"></solid>
+
+            <padding
+                android:bottom="10dp"
+                android:left="2dp"
+                android:right="10dp"
+                android:top="10dp" />
+
+            <!-- 线的宽度 -->
+            <stroke
+                android:width="5dp"
+                android:color="@color/ok_btn_color"></stroke>
+
+            <!-- 矩形的圆角半径 -->
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="end"
+            android:src="@android:drawable/arrow_down_float" />
+    </item>
+</layer-list>

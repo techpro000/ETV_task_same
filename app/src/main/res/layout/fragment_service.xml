@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginRight="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dimen_120"
+                android:layout_height="wrap_content"
+                android:text="@string/connection_status"
+                android:textColor="@color/app_txt_color"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_weight="1.0"
+                android:textColor="@color/app_txt_color"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_line_by_hand"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/btn_fouces_style"
+                android:nextFocusDown="@+id/tv_server_address"
+                android:text="自动连接"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_line_log"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:background="@drawable/btn_fouces_style"
+                android:nextFocusDown="@+id/tv_server_address"
+                android:text="连接记录"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="20dp" />
+
+        <!--用来封装所有的View-->
+        <LinearLayout
+            android:id="@+id/lin_net_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--服务器地址-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/server_address" />
+
+                <EditText
+                    android:id="@+id/tv_server_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:hint="请输入合法IP或域名"
+                    android:nextFocusUp="@id/btn_line_log"
+                    android:nextFocusDown="@+id/btn_modfy_port"
+                    android:singleLine="true"
+                    android:text="192.168.0.0"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/control_port" />
+
+                <TextView
+                    android:id="@+id/tv_control_port"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:textColor="@color/app_txt_color"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btn_modfy_port"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/btn_fouces_style"
+                    android:gravity="center"
+                    android:nextFocusUp="@id/tv_server_address"
+                    android:nextFocusDown="@+id/et_username"
+                    android:text="修改"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+            <!--===========用户名字======-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="用户名" />
+
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="服务器登录用户名"
+                    android:nextFocusUp="@id/btn_modfy_port"
+                    android:nextFocusDown="@+id/bt_save_line"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView style="@style/internet_server_txt" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="( 如果是分配账号,请写服务器登录账号 )"
+                    android:textColor="@color/red"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                style="@style/setting_current_view_style"
+                android:layout_marginTop="10dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/internet_server_txt"
+                    android:text="@string/download_link" />
+
+                <TextView
+                    android:id="@+id/tv_download_link"
+                    style="@style/dev_time_txt_style"
+                    android:text="/sdcard/etv" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_save_line"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:background="@drawable/btn_fouces_style"
+                android:nextFocusUp="@id/tv_server_address"
+                android:nextFocusDown="@id/tv_server_address"
+                android:text="连接"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

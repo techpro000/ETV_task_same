@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_15"
+        android:text="@string/mouse_no_use"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_18" />
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <!--顶部四个按钮菜单-->
+        <LinearLayout
+            android:id="@+id/lin_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dimen_20">
+
+            <LinearLayout
+                android:id="@+id/lin_server_conn"
+                style="@style/menu_setting_lin_type">
+
+                <Button
+                    android:id="@+id/tv_server_conn"
+                    style="@style/menu_setting_text_type"
+                    android:text="@string/net_work_connect" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_net_work"
+                style="@style/menu_setting_lin_type">
+
+                <Button
+                    android:id="@+id/tv_net_work"
+                    style="@style/menu_setting_text_type"
+                    android:text="@string/intent_setting" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_net_down"
+                style="@style/menu_setting_lin_type">
+
+                <Button
+                    android:id="@+id/tv_net_down"
+                    style="@style/menu_setting_text_type"
+                    android:text="@string/net_task_load" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_single"
+                style="@style/menu_setting_lin_type">
+
+                <Button
+                    android:id="@+id/tv_single"
+                    style="@style/menu_setting_text_type"
+                    android:text="@string/work_single" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_setting"
+                style="@style/menu_setting_lin_type">
+
+                <Button
+                    android:id="@+id/tv_setting"
+                    style="@style/menu_setting_text_type"
+                    android:text="@string/app_setting" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/dimen_20"
+            android:layout_marginRight="@dimen/dimen_20"
+            android:background="@color/back_ground" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_15"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:layout_marginRight="@dimen/dimen_15"
+            android:background="#f7f7f7"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/net"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_net_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/server"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_web_statues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/count"
+                    android:textColor="@color/grey"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lin_title_view"
+            android:layout_marginTop="@dimen/dimen_10" />
+
+    </LinearLayout>
+
+</RelativeLayout>

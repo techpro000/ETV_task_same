@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/termnal_setting_lin_hro"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="80dp">
+
+        <ImageView
+            android:id="@+id/iv_item_guardian"
+            style="@style/termnal_setting_image"
+            android:src="@drawable/icon_auto_power" />
+
+        <TextView
+            android:id="@+id/tv_item_guardian"
+            style="@style/guardian_title"
+            android:text="@string/boot_up" />
+
+        <TextView
+            android:id="@+id/tv_item_statues"
+            style="@style/guardian_content" />
+
+        <com.ys.model.view.MyToggleButton
+            android:id="@+id/item_toggle"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/item_btn_setting"
+            style="@style/termnal_setting_button"
+            android:text="@string/modify"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <View style="@style/setting_current_view_style" />
+
+</RelativeLayout>

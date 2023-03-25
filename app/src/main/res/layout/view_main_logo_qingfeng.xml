@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/lin_qf_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="智 能 信 息 发 布 系 统"
+            android:textColor="@color/color_qingfeng"
+            android:textSize="27sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:gravity="center"
+            android:text="世界因我而美丽"
+            android:textColor="@color/color_qingfeng"
+            android:textSize="60sp"
+            android:typeface="serif" />
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:background="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_15"
+            android:gravity="center"
+            android:text="智慧显示 · 智享生活"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:gravity="center"-->
+        <!--android:text="智 能 信 息 发 布 系 统"-->
+        <!--android:textColor="@color/color_qingfeng"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textStyle="bold" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginTop="@dimen/dimen_15"-->
+        <!--android:gravity="center"-->
+        <!--android:text="世界因我而美丽"-->
+        <!--android:textColor="@color/color_qingfeng"-->
+        <!--android:textSize="45sp"-->
+        <!--android:typeface="serif" />-->
+
+        <!--<View-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginTop="@dimen/dimen_20"-->
+        <!--android:background="@color/white" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginTop="@dimen/dimen_15"-->
+        <!--android:gravity="center"-->
+        <!--android:text="智慧显示 · 智享生活"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="18sp" />-->
+    </LinearLayout>
+
+</RelativeLayout>

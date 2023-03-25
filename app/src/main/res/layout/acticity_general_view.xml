@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_20"
+            android:text="@string/general_setting"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/app_txt_color" />
+
+        <!--==============时间设置=============================================-->
+
+        <com.ys.model.view.SettingClickView
+            android:id="@+id/setting_view_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_txt_right="@string/setting_default"
+            app:img_left="@drawable/time"
+            app:txt_content=""
+            app:txt_title="@string/time_setting_app" />
+
+        <!--==============定时开关机设置=============================================-->
+
+        <com.ys.model.view.SettingClickView
+            android:id="@+id/btn_time_poweronoff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_txt_right="@string/setting_default"
+            app:img_left="@drawable/time"
+            app:txt_content=""
+            app:txt_title="@string/power_on_off" />
+
+
+        <!--存储控件===========================-->
+        <com.ys.model.view.SettingClickView
+            android:id="@+id/btn_sdmanager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_txt_right="@string/query"
+            app:img_left="@drawable/language"
+            app:txt_content=""
+            app:txt_title="@string/sdcard_size" />
+
+        <com.ys.model.view.SettingClickView
+            android:id="@+id/btn_reboot_hand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_txt_right="@string/setting_default"
+            app:img_left="@drawable/icon_auto_power"
+            app:txt_content=""
+            app:txt_title="@string/reboot_hand" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

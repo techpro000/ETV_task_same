@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_main_bgg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY" />
+
+    <!--顶部菜单栏-->
+    <RelativeLayout
+        android:id="@+id/relative_top_menu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:layout_width="560dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_work_model"
+                    android:layout_width="@dimen/dimen_35"
+                    android:layout_height="@dimen/dimen_35"
+                    android:layout_gravity="center_vertical"
+                    android:background="@mipmap/dialog_net" />
+
+                <ImageView
+                    android:id="@+id/iv_net_state"
+                    android:layout_width="@dimen/dimen_40"
+                    android:layout_height="@dimen/dimen_40"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_20"
+                    android:background="@mipmap/net_line" />
+
+                <ImageView
+                    android:id="@+id/iv_line_state"
+                    android:layout_width="@dimen/dimen_35"
+                    android:layout_height="@dimen/dimen_35"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_20"
+                    android:background="@mipmap/line_web" />
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_20"
+                    android:gravity="center_vertical"
+                    android:text="2018-01-01 9:43"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!--//清风定制界面-->
+    <include layout="@layout/view_main_logo_qingfeng" />
+
+    <ImageView
+        android:id="@+id/iv_logo_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <View
+        android:id="@+id/view_cleck"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/dimen_100"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:id="@+id/tv_mac_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <include layout="@layout/view_float_down" />
+
+</RelativeLayout>

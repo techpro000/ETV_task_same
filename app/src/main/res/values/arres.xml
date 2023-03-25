@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="permissionNames">
+        <item>@string/permission_storage</item>
+        <item>@string/permission_location</item>
+        <item>@string/permission_camera</item>
+    </array>
+
+    <declare-styleable name="ButtonView">
+        <attr name="btn_background" format="reference"></attr>
+        <attr name="text" format="string"></attr>
+    </declare-styleable>
+
+    <string-array name="Language">
+        <item>中文</item>
+        <item>English</item>
+    </string-array>
+
+
+</resources>

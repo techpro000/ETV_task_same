@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_devices_setting"
+                style="@style/setting_title_desc"
+                android:text="@string/storage" />
+
+            <ProgressBar
+                android:id="@+id/pro_deal"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dimen_15"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <ListView
+            android:id="@+id/lv_sd_info"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:padding="@dimen/dimen_15" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_10">
+
+            <Button
+                android:id="@+id/btn_clear_sdcard"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_fouces_style"
+                android:text="@string/clear_memory"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_file_manager"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_fouces_style"
+                android:text="@string/file_manager"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+
+
+

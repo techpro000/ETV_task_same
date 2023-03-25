@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="@dimen/dimen_15">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--==============任务播放设置=============================================-->
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_task_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/query"
+                app:img_left="@drawable/ter_icon_dev"
+                app:txt_content=""
+                app:txt_title="@string/task_play" />
+
+            <!--定位管理=============================-->
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_midify_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/modify"
+                app:img_left="@drawable/device_location"
+                app:txt_content=""
+                app:txt_title="@string/dev_position" />
+
+            <!--=======================设备名称===================-->
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_commit_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/modify"
+                app:img_left="@mipmap/ter_name"
+                app:txt_content=""
+                app:txt_title="@string/device_name" />
+
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_dev_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/ter_icon_dev"
+                app:txt_content=""
+                app:txt_title="@string/dev_info" />
+
+
+            <!--=====同步服务器数据============-->
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_play_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:img_left_switch="@drawable/ter_icon_screen"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/play_total_update" />
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_traffic_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:img_left_switch="@mipmap/ter_net"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/net_total_add" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

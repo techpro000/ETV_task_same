@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.media.tv.TvView
+        android:id="@+id/tv_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/btn_type_change"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen_40"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:background="@drawable/rect_circle_grey"
+        android:text="TYPE-1"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

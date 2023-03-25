@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="etvsame_db" />
+    <version value="1" />
+
+    <list>
+        <mapping class="com.etv.entity.PoOnOffLogEntity" />
+        <mapping class="com.etv.task.entity.TaskWorkEntity" />
+        <mapping class="com.etv.task.entity.PmListEntity" />
+        <mapping class="com.etv.task.entity.SceneEntity" />
+        <mapping class="com.etv.task.entity.CpListEntity" />
+        <mapping class="com.etv.task.entity.MpListEntity" />
+        <mapping class="com.etv.task.entity.TextInfo" />
+        <mapping class="com.etv.task.entity.TimerDbEntity" />
+        <mapping class="com.etv.setting.db.TimeLocalEntity" />
+        <mapping class="com.etv.entity.StatisticsEntity" />
+        <mapping class="com.etv.entity.BggImageEntity" />
+        <mapping class="com.etv.util.net.AppTrafficModel" />
+        <mapping class="com.etv.entity.ControlMediaVoice" />
+    </list>
+
+    <storage value="external" />
+</litepal>

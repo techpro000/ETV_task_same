@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="700dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rect_circle"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务器设置 "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(可使用U盘.SD卡进行配置)" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/internet_server_txt"
+                android:text="@string/connection_status" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/dev_time_txt_style" />
+        </LinearLayout>
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="10dp" />
+
+
+        <!--==========服务器地址===============-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/internet_server_txt"
+                android:text="@string/server_address" />
+
+            <EditText
+                android:id="@+id/tv_server_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="192.168.1.120"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/internet_server_txt"
+                android:text="@string/control_port" />
+
+            <TextView
+                android:id="@+id/tv_control_port"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1.0"
+                android:singleLine="true"
+                android:textColor="@color/app_txt_color"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_modfy_port"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="修改"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="10dp" />
+
+
+        <!--==========用户名===============-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/internet_server_txt"
+                android:text="用户名" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="服务器登录用户名"
+                android:singleLine="true"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/setting_current_view_style"
+            android:layout_marginTop="10dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/internet_server_txt"
+                android:text="@string/download_link" />
+
+            <TextView
+                android:id="@+id/tv_download_link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="/sdcard/ys/client"
+                android:textColor="@color/app_txt_color"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_fouces_style"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="连接"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

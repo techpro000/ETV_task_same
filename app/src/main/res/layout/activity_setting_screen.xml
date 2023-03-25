@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rela_bgg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <ScrollView
+        style="@style/setting_fragment_lin"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rect_circle"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/control_center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_txt_color" />
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_screen_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/icon_screen"
+                app:txt_content=""
+                app:txt_title="@string/screen_type" />
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_screen_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@mipmap/icon_double_screen"
+                app:txt_content=""
+                app:txt_title="@string/show_position" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

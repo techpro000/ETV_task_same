@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rect_circle"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_20">
+
+        <TextView
+            android:id="@+id/tv_hour1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="请选择时间"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/grey" />
+
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_50"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_hour_add"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_min_add"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/tv_hour"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1.0"
+                android:background="@color/white"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="9"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:focusable="false"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="40.0sp" />
+
+            <EditText
+                android:id="@+id/tv_min"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1.0"
+                android:background="@color/white"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="30"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_reduce_hour"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_reduce_min"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="1.0"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="50dp">
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_cacel"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/btn_fouces_style"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

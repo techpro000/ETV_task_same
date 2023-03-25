@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground">
+
+    <LinearLayout
+        android:id="@+id/lin_exit"
+        style="@style/setting_exit_layout">
+
+        <ImageView style="@style/setting_exit_image" />
+
+        <TextView
+            android:id="@+id/tv_exit"
+            style="@style/setting_exit_txt" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/setting_fragment_lin">
+
+        <RelativeLayout
+            android:id="@+id/rela_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_hiddle_title"
+                style="@style/setting_title_desc"
+                android:text="节目信息" />
+
+            <Button
+                android:id="@+id/btn_clear_pro"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dimen_15"
+                android:background="@drawable/btn_fouces_style"
+                android:text="清除节目"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <!--=====================标题栏===================-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dimen_50"
+            android:paddingRight="@dimen/dimen_50">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:text="类型"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="任务名称"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="播放周期"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="开始时间"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="结束时间"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_5"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="发送时间"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/text_18" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list_pro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:paddingBottom="@dimen/dimen_15"
+            android:paddingLeft="@dimen/dimen_50"
+            android:paddingRight="@dimen/dimen_50" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_no_data"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/dimen_200"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/no_data"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ys.etv">
+    <!--android:sharedUserId="android.uid.system"-->
+
+    <!--   9.1 apk升级权限-->
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+    <uses-permission android:name="android.permission.permRead" />
+    <uses-permission android:name="android.permission.permWrite" />
+
+    <permission android:name="com.guardian.service.GuardianService" />
+    <permission android:name="com.hdmi.service.HdmiInScreenService" />
+    <!--   百度地图定位前台服务-->
+    <uses-permission android:name="com.guardian.service.GuardianService" />
+    <uses-permission android:name="com.hdmi.service.HdmiInScreenService" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INJECT_EVENTS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!--屏幕常亮，保持唤醒-->
+
+    <!--获取存储读写权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!--读取帧缓存用于屏幕截图-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_FRAME_BUFFER" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序获取当前任务-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--查看手机app的运行状态，前台还是后台-->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!--允许程序重新启动其他程序-->
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <!--android 8.1安装权限-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--静默安装需要的权限-->
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <!--允许删除卸载程序-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!--允许一个程序清除用户设置-->
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <!--清理用户数据-->
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+    <!--允许程序设置时间区域-->
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_USER_DATA" />
+
+    <uses-permission android:name="android.permission.SET_TIME" />
+    <!--允许使用PowerManager的 WakeLocks保持进程在休眠时从屏幕消失-->
+    <uses-permission android:name="android.permission.SET_TIME_ZONE" />
+    <uses-permission android:name="android.permission.USES_POLICY_FORCE_LOCK" />
+    <!--悬浮窗权限-->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!--允许一个程序广播常用intents-->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!--允许程序改变网络连接状态-->
+    <uses-permission android:name="android.settings.action.MANAGE_OVERLAY_PERMISSION" />
+    <!--允许程序修改全局音频设置-->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <!--获得的位置信息-->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <application
+        android:name="com.EtvApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/app_icon_green"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name="com.etv.activity.StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!--<category android:name="android.intent.category.HOME" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.MONKEY" />-->
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.etv.activity.TestActivity" />
+
+        <activity
+            android:name="com.etv.activity.MainActivity"
+            android:launchMode="singleTask" />
+
+        <activity android:name="com.etv.activity.SplashLowActivity" />
+        <activity android:name="com.etv.util.location.ProCityDialogActivity" />
+
+        <activity
+            android:name="com.etv.task.activity.PlayerTaskActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask" />
+
+
+        <activity android:name="com.etv.setting.StorageActivity" />
+
+        <activity android:name="com.etv.setting.TimerChangeActivity" />
+        <activity android:name="com.etv.activity.sdcheck.SdCheckActivity" />
+
+        <activity
+            android:name="com.etv.setting.HiddleSetActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.etv.setting.UpdateInfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.etv.setting.app.AppManagerActivity"
+            android:launchMode="singleTask" />
+
+        <activity android:name="com.etv.activity.FileListActivity" />
+        <activity
+            android:name="com.etv.activity.ClearCacheActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/MyDialog" />
+
+
+        <activity android:name="com.etv.setting.PowerInOffLogActivity" />
+        <activity android:name="com.etv.activity.InitViewActivity" />
+        <activity android:name="com.etv.setting.ScreenSettingActivity" />
+        <activity android:name="com.etv.setting.SingleSettingActivity" />
+        <activity android:name="com.etv.activity.SettingSysActivity" />
+        <activity android:name="com.etv.setting.TimeSettingActivity" />
+        <activity android:name="com.etv.setting.PowerOnOffWebActivity" />
+        <activity android:name="com.etv.setting.TaskInfoActivity" />
+        <activity
+            android:name="com.etv.activity.TimerReduceActivity"
+            android:theme="@style/MyDialog" />
+
+        <activity
+            android:name="com.etv.setting.SystemApkInstallActivity"
+            android:theme="@style/MyDialog" />
+
+        <activity android:name="com.etv.setting.ScreenShowSetting" />
+        <activity android:name="com.etv.setting.InterestActivity" />
+
+        <activity android:name="com.etv.setting.GuardianActivity" />
+        <activity android:name="com.etv.setting.ControlCenterActivity" />
+        <activity android:name="com.etv.setting.GeneralSetActivity" />
+        <activity android:name="com.etv.setting.SettingScreenActivity" />
+        <activity android:name="com.etv.activity.TestPlayActivity" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="@string/map_default" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.ys.etv.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <receiver android:name="com.etv.receiver.BootBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="START_ETV_ACTION_BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <service android:name="com.etv.service.TcpService" />
+        <service android:name="com.etv.service.TcpSocketService" />
+        <service android:name="com.etv.service.EtvService" />
+        <service android:name="com.etv.service.TaskWorkService" />
+
+        <!--解决9.0 找不到apache类问题-->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+    </application>
+
+</manifest>

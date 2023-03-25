@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dimen_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_30"
+            android:layout_marginTop="@dimen/dimen_30"
+            android:orientation="vertical">
+
+            <!--==============任务播放设置=============================================-->
+            <LinearLayout style="@style/termnal_setting_lin_hro">
+
+                <ImageView
+                    style="@style/termnal_setting_image"
+                    android:src="@drawable/ter_icon_dev" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_40"
+                    android:text="@string/task_play"
+                    android:textColor="@color/app_txt_color"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:textColor="@color/app_txt_color"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btn_task_play"
+                    style="@style/termnal_setting_button"
+                    android:text="@string/query" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@color/back_ground" />
+
+            <!--使用说明-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:text="@string/use_info"
+                android:textColor="@color/grey"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dimen_15"
+                android:text="@string/use_one"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="@string/use_two"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="@string/use_three"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="@string/use_tips"
+                android:textColor="@color/red"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="@string/use_four"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:text="@string/use_five"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="630dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="@dimen/dimen_5"
+                android:background="@mipmap/guide_down_task" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
