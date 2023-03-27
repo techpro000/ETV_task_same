@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rela_bgg"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@color/color_blue">
+
+        <Button
+            android:id="@+id/btn_topBar_back"
+            android:layout_width="@dimen/dimen_45"
+            android:layout_height="@dimen/dimen_45"
+            android:background="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="标题"
+            android:textColor="@color/white_base"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_topBar_menu"
+            android:layout_width="@dimen/dimen_45"
+            android:layout_height="@dimen/dimen_45"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white_base" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_base"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout>

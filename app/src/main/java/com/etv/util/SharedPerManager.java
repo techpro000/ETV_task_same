@@ -1041,4 +1041,23 @@ public class SharedPerManager {
     }
 
 
+    private static int backMessageType = -1;
+
+    /***
+     * 同步方式
+     * @return
+     */
+    public static int getMessageType() {
+        if (backMessageType != -1) {
+            return backMessageType;
+        }
+        backMessageType = (int) EtvApplication.getInstance().getData("getMessageType", AppInfo.MESSAGE_TYPE_UDP);
+        return backMessageType;
+    }
+
+    public static void setMessageType(int getMessageType) {
+        backMessageType = getMessageType;
+        EtvApplication.getInstance().saveData("getMessageType", getMessageType);
+    }
+
 }

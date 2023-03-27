@@ -19,6 +19,7 @@ import com.etv.util.guardian.GuardianUtil;
 import com.etv.util.system.CpuModel;
 import com.etv.util.system.LeaderBarUtil;
 import com.etv.util.system.SystemManagerInstance;
+import com.ys.model.config.DialogConfig;
 
 import java.io.File;
 
@@ -130,6 +131,8 @@ public class SplashBaseActivity extends GuardianBaseActivity {
         MyLog.cdl("=======屏幕得尺寸==" + width + " / " + height);
         SharedPerManager.setScreenWidth(width);
         SharedPerManager.setScreenHeight(height);
+        DialogConfig.SCREEN_WIDTH = width;
+        DialogConfig.SCREEN_HEIGHT = height;
     }
 
 }

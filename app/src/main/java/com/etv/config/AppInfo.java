@@ -44,6 +44,11 @@ public class AppInfo {
     public static final int SERVER_BACK_DEV_IS_ONLINE = 4002;
     //发送指令给服务器，心跳包
 
+
+    //同步通讯方式
+    public static final int MESSAGE_TYPE_UDP = 0;  //局域网信号传输
+    public static final int MESSAGE_TYPE_SERIALPORT = 1;  //串口通讯
+
     /***
      * 心跳消息
      * @return

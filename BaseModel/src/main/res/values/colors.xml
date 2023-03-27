@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent_base">#00000000</color>
+    <color name="white_base">#FFFFFF</color>
+    <color name="color_blue">#00CCFF</color>
+    <color name="black_base">#000000</color>
+    <color name="back_ground_base">#b8b8b8</color>
+    <color name="app_txt_color">#4D4D4D</color>
+    <color name="terminal_settings">#91D51B</color>
+    <color name="line_color">#A7A7AB</color>
+    <color name="grey_base">#373737</color>
+    <color name="grey_light">#cfcfcf</color>
+
+    <color name="divider_color">#737373</color>
+</resources>

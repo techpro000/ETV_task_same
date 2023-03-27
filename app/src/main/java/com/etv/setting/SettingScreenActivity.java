@@ -2,56 +2,32 @@ package com.etv.setting;
 
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowMetrics;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.alibaba.fastjson.JSON;
-import com.etv.adapter.recycle.BaseQuickAdapter;
 import com.etv.adapter.recycle.BaseViewHolder;
 import com.etv.adapter.recycle.QuickAdapter;
-import com.etv.adapter.recycle.listener.OnItemClickListener;
-import com.etv.config.ApiInfo;
 import com.etv.config.AppInfo;
-import com.etv.entity.Resp;
-import com.etv.entity.SameScreen;
-import com.etv.entity.ShowTypeEntity;
-import com.etv.http.MyCallback;
 import com.etv.http.SameScreenHelper;
 import com.etv.listener.TextInputListener;
 import com.etv.setting.entity.RowCow;
-import com.etv.task.util.TaskDealUtil;
-import com.etv.util.CodeUtil;
 import com.etv.util.MyLog;
-import com.etv.util.ScreenUtil;
 import com.etv.util.SharedPerManager;
 import com.etv.util.SharedPerUtil;
 import com.ys.etv.R;
 import com.ys.etv.databinding.ActivityScreenLinkSettingBinding;
-import com.ys.etv.databinding.ActivitySettingScreenBinding;
-import com.ys.model.dialog.EditTextDialog;
 import com.ys.model.dialog.RadioListDialog;
 import com.ys.model.entity.RedioEntity;
-import com.ys.model.listener.EditTextDialogListener;
 import com.ys.model.listener.MoreButtonListener;
-import com.ys.model.listener.MoreButtonToggleListener;
 import com.ys.model.listener.RadioChooiceListener;
-import com.ys.rkapi.Utils.ScreenUtils;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
 
 /***
  * 连屏设置界面
@@ -78,7 +54,7 @@ public class SettingScreenActivity extends SettingBaseActivity {
         initListener();
 
         mainToggle = mBinding.switchTaskMain.findViewById(R.id.toggle_switch);
-        if (SharedPerManager.getAutoRowCow()){
+        if (SharedPerManager.getAutoRowCow()) {
             getRowCowByNetwork();
             mainToggle.setEnabled(false);
         }
@@ -95,7 +71,7 @@ public class SettingScreenActivity extends SettingBaseActivity {
                 getRowCowByNetwork();
             }
         });
-        mBinding.switchTaskMain.setOnMoretListener((view, check)->{
+        mBinding.switchTaskMain.setOnMoretListener((view, check) -> {
             SharedPerManager.setTaskSameMain(check ? 0 : 1);
         });
 
@@ -114,7 +90,7 @@ public class SettingScreenActivity extends SettingBaseActivity {
             }
         };
         adapter.setOnItemClickListener((baseAdapter, view, position) -> {
-            if (SharedPerManager.getAutoRowCow()){
+            if (SharedPerManager.getAutoRowCow()) {
                 showToastView("当前为自动获取模式");
                 return;
             }
@@ -135,6 +111,13 @@ public class SettingScreenActivity extends SettingBaseActivity {
     }
 
     private void initListener() {
+        mBinding.btnMessageStyle.setOnMoretListener(new MoreButtonListener() {
+            @Override
+            public void clickView(View view) {
+                showMessageTypeDialog();
+            }
+        });
+
         mBinding.etCow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,10 +169,46 @@ public class SettingScreenActivity extends SettingBaseActivity {
         mBinding.etCow.addTextChangedListener(inputListener);
     }
 
+    private void showMessageTypeDialog() {
+        RadioListDialog radioListDialog = new RadioListDialog(SettingScreenActivity.this);
+        List<RedioEntity> listShow = new ArrayList<RedioEntity>();
+        listShow.add(new RedioEntity(getString(R.string.type_newwork)));
+        listShow.add(new RedioEntity(getString(R.string.type_serialport)));
+        int currentType = SharedPerManager.getMessageType();
+        radioListDialog.show(getString(R.string.capture_update_height), listShow, currentType);
+        radioListDialog.setRadioChooiceListener(new RadioChooiceListener() {
+            @Override
+            public void backChooiceInfo(RedioEntity redioEntity, int chooicePosition) {
+                MyLog.cdl("===chooicePosition=" + chooicePosition);
+                SharedPerManager.setMessageType(chooicePosition);
+                showToastView(getString(R.string.set_success_reboot_start));
+                updateMainView();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateMainView();
+    }
+
+    private void updateMainView() {
+        int currentType = SharedPerManager.getMessageType();
+        switch (currentType) {
+            case AppInfo.MESSAGE_TYPE_UDP:
+                mBinding.btnMessageStyle.setTxtContent(getString(R.string.type_newwork));
+                break;
+            case AppInfo.MESSAGE_TYPE_SERIALPORT:
+                mBinding.btnMessageStyle.setTxtContent(getString(R.string.type_serialport));
+                break;
+        }
+    }
+
     private void getRowCowByNetwork() {
         SameScreenHelper.getRowCowByNetwork(data -> {
             mBinding.switchTaskMain.setSwitchStatues(data.isMaster == 1);
-            parseRowCowInput(data.rowNum, data.columnNum, data.serialNum -1);
+            parseRowCowInput(data.rowNum, data.columnNum, data.serialNum - 1);
         });
     }
 
@@ -197,7 +216,7 @@ public class SettingScreenActivity extends SettingBaseActivity {
      * modify Row cow Nums
      */
     private void showModifyRowCowDialog(String title, int index, Button button) {
-        if (SharedPerManager.getAutoRowCow()){
+        if (SharedPerManager.getAutoRowCow()) {
             showToastView("当前为自动获取模式");
             return;
         }

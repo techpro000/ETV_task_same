@@ -10,10 +10,7 @@ public class AppConfig {
     public static final int CONSUMER_SNGHANG_VIDEO = 2; //圣航视频同步及黑屏问题讨论
     public static final int CONSUMER_TYPE = CONSUMER_SNGHANG_VIDEO;
 
-    //同步通讯方式
-    public static final int MESSAGE_TYPE_UDP = 0;  //局域网信号传输
-    public static final int MESSAGE_TYPE_SERIALPORT = 1;  //串口通讯
-    public static final int MESSAGE_TYPE = MESSAGE_TYPE_UDP;
+
 
     //用来检测当前开机时间是否是正常得时间
     public static long TIME_CHECK_POWER_REDUCE = 20211230101010L;

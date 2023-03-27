@@ -175,7 +175,9 @@ public class EtvService extends Service {
     SerialPort serialPortUtil;
 
     private void initUdp() {
-        if (AppConfig.MESSAGE_TYPE == AppConfig.MESSAGE_TYPE_SERIALPORT) {
+        int currentType = SharedPerManager.getMessageType();
+        MyLog.cdl("initUdp==" + currentType);
+        if (currentType == AppInfo.MESSAGE_TYPE_SERIALPORT) {
             initSerialPortUtil();
             return;
         }
@@ -199,7 +201,8 @@ public class EtvService extends Service {
      * @param sendIp
      */
     public void sendUdpMessage(String message, String sendIp) {
-        if (AppConfig.MESSAGE_TYPE == AppConfig.MESSAGE_TYPE_SERIALPORT) {
+        int currentType = SharedPerManager.getMessageType();
+        if (currentType == AppInfo.MESSAGE_TYPE_SERIALPORT) {
             seneMessageSerialPort(message, sendIp);
             return;
         }

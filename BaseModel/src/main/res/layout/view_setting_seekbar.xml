@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_30"
+        android:paddingRight="@dimen/dimen_30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_70"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_image_show"
+                style="@style/termnal_setting_image"
+                android:background="@drawable/time" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/app_setting_title"
+                android:text="@string/time_setting" />
+
+            <SeekBar
+                android:id="@+id/seekbar_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View style="@style/setting_current_view_style" />
+    </LinearLayout>
+
+</RelativeLayout>

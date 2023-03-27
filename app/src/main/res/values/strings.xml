@@ -631,7 +631,11 @@
     <string name="boot_dialog_content">开机启动未打开，是否前去打开？(重启生效)</string>
     <string name="str_dev_zhuci">设备主次</string>
     <string name="str_auto">自动获取</string>
-
     <string name="reboot_hand">手动重启</string>
     <string name="change_line_model">请切换连接类型为WebSocket</string>
+    <string name="message_type">通讯方式</string>
+    <string name="type_newwork">网络同步</string>
+    <string name="type_serialport">串口同步</string>
+    <string name="set_success_reboot_start">设置成功！重启生效</string>
+
 </resources>

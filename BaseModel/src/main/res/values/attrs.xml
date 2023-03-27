@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Setting_Seekbar">
+        <attr name="img_left_seekbar" format="reference" />
+        <attr name="txt_title_seekbar" format="string" />
+        <attr name="txt_content_seekbar" format="string" />
+    </declare-styleable>
+
+
+    <!--设置界面设置选项-->
+    <declare-styleable name="Setting_Button">
+        <attr name="img_left" format="reference" />
+        <attr name="txt_title" format="string" />
+        <attr name="txt_content" format="string" />
+        <attr name="btn_txt_right" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="Setting_Switch">
+        <attr name="img_left_switch" format="reference" />
+        <attr name="txt_title_switch" format="string" />
+        <attr name="txt_content_switch" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TopBarView">
+        <attr name="backColor" format="color" />
+        <attr name="title" format="string" />
+        <attr name="leftShow" format="boolean" />
+        <attr name="rightShow" format="boolean" />
+        <attr name="rightImage" format="reference" />
+        <attr name="leftImage" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="More_Button">
+        <attr name="image_left" format="reference" />
+        <attr name="showright" format="boolean" />
+        <attr name="title_content" format="string" />
+        <attr name="showbottom" format="boolean" />
+        <attr name="showtop" format="boolean" />
+        <attr name="right_content" format="string" />
+        <attr name="text_font_color" format="reference" />
+    </declare-styleable>
+</resources>

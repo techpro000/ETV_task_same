@@ -71,7 +71,6 @@
             app:txt_content=""
             app:txt_title="@string/reboot_hand" />
 
-
     </LinearLayout>
 
 </RelativeLayout>

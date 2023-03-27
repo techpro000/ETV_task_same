@@ -1,0 +1,110 @@
+//package com.ys.model.file;
+//
+//import android.os.Handler;
+//
+//import java.io.File;
+//import java.io.FileInputStream;
+//import java.io.FileOutputStream;
+//import java.io.InputStream;
+//
+///***
+// * 将文件写入SD卡中
+// */
+//public class FileWriteRunnableBack implements Runnable {
+//
+//    String filePath;
+//    String savePath;
+//    WriteSdListener listener;
+//    long fileLength;
+//    Handler handler = new Handler();
+//
+//    /***
+//     * 文件复制方法
+//     * @param filePath
+//     * 文件得全路径
+//     * @param savePath
+//     * 文件保存得新路径-全路径
+//     * @param listener
+//     * 文件读写回调接口
+//     */
+//    public FileWriteRunnableBack(String filePath, String savePath, WriteSdListener listener) {
+//        this.filePath = filePath;
+//        this.savePath = savePath;
+//        this.listener = listener;
+//        File file = new File(filePath);
+//        if (file.exists()) {
+//            fileLength = file.length();
+//        }
+//    }
+//
+//    @Override
+//    public void run() {
+//        try {
+//            File fileSave = new File(savePath);
+//            if (fileSave.exists()) {
+//                fileSave.delete();
+//            }
+//            fileSave.createNewFile();
+//            InputStream inputStream = new FileInputStream(filePath);
+//            // 1.建立通道对象
+//            FileOutputStream fos = new FileOutputStream(fileSave);
+//            // 2.定义存储空间
+//            byte[] buffer = new byte[8192];
+//            // 3.开始读文件
+//            int lenght = 0;
+//            long sum = 0;
+//            while ((lenght = inputStream.read(buffer)) != -1) {// 循环从输入流读取buffer字节
+//                // 将Buffer中的数据写到outputStream对象中
+//                fos.write(buffer, 0, lenght);
+//                sum += lenght;
+//                int progress = (int) (sum * 100 / fileLength);
+//                backProgress(progress);
+//            }
+//            fos.flush();// 刷新缓冲区
+//            fos.close();
+//            inputStream.close();
+//            backSuccess(savePath);
+//        } catch (Exception e) {
+//            backFailed(e.toString());
+//        }
+//    }
+//
+//    public void backFailed(final String rrorDesc) {
+//        if (listener == null) {
+//            return;
+//        }
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                listener.writrFailed(rrorDesc);
+//            }
+//        });
+//    }
+//
+//    public void backSuccess(final String filePath) {
+//        if (listener == null) {
+//            return;
+//        }
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                listener.writeSuccess(filePath);
+//            }
+//        });
+//    }
+//
+//    public void backProgress(final int prgress) {
+//        if (listener == null) {
+//            return;
+//        }
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+////                Log.i("write", "=========写入中===================" + prgress);
+//                listener.writeProgress(prgress);
+//            }
+//        });
+//    }
+//
+//
+//}
