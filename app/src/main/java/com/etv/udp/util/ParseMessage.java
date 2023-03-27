@@ -37,13 +37,13 @@ public class ParseMessage {
                 if (SharedPerUtil.getSameTaskMainLeader()) {
                     break;
                 }
-                AppStatuesListener.getInstance().playProgress.setValue(cmdData);
+                AppStatuesListener.getInstance().playProgress.postValue(cmdData);
                 break;
             case CmdAct.CMD_SEEK_PROGRESS:
                 // 3
                 long time = System.currentTimeMillis();
                 if (time - lastTime > 500) {
-                    CmdObserver.get().setValue(cmdData);
+                    CmdObserver.get().postValue(cmdData);
                     System.out.println("=============mesc seek->" + cmdData.pos);
                 }
                 lastTime = time;

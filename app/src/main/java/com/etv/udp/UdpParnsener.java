@@ -9,7 +9,6 @@ import com.udpsync.Command;
 import com.udpsync.OnUDPCallback;
 import com.udpsync.UDPSocket;
 import com.udpsync.bean.CmdData;
-import com.udpsync.observe.CmdObserver;
 
 public class UdpParnsener {
 

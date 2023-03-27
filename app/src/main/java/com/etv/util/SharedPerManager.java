@@ -585,8 +585,14 @@ public class SharedPerManager {
         } else if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_SOCKET) {
             ipAddressDefault = ApiInfo.IP_DEFAULT_URL_SOCKET;
         }
-        if (AppConfig.CONSUMER_TYPE == AppConfig.CONSUMER_CNIN_MONEY) {
-            ipAddressDefault = "10.247.99.121";
+
+        switch (AppConfig.CONSUMER_TYPE) {
+            case AppConfig.CONSUMER_CNIN_MONEY:
+                ipAddressDefault = "10.247.99.121";
+                break;
+            case AppConfig.CONSUMER_SNGHANG_VIDEO:
+                ipAddressDefault = "192.168.210.200";
+                break;
         }
         String ipAddress = ((String) EtvApplication.getInstance().getData("webHost", ipAddressDefault));
         return ipAddress;
@@ -601,36 +607,6 @@ public class SharedPerManager {
         MyLog.cdl("=========设置的服务器IP地址===" + webHost);
         EtvApplication.getInstance().saveData("webHost", webHost);
     }
-
-    /***
-     * 设置外网IP
-     * @param ExtranetIP
-     */
-    public static void setExtranetIP(String ExtranetIP) {
-        EtvApplication.getInstance().saveData("ExtranetIP", ExtranetIP);
-    }
-
-    /***
-     * 获取外网IP
-     * @return
-     */
-    public static String getExtranetIP() {
-        return ((String) EtvApplication.getInstance().getData("ExtranetIP", ""));
-    }
-
-    public static void setNetworkMode(String networkmode) {
-        EtvApplication.getInstance().saveData("networkmode", networkmode);
-    }
-
-    public static String getNetworkMode() {
-        String locale = Locale.getDefault().getLanguage();
-        if (locale.contains("en")) {  //英文版本
-            return ((String) EtvApplication.getInstance().getData("networkmode", "Dynamic acquisition"));
-        } else {
-            return ((String) EtvApplication.getInstance().getData("networkmode", "动态获取"));
-        }
-    }
-
 
     public static int getScreenHeight() {
         int screenHeight = 1080;
