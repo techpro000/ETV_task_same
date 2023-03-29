@@ -228,9 +228,11 @@ public class SettingScreenActivity extends SettingBaseActivity {
         switch (currentType) {
             case AppInfo.MESSAGE_TYPE_UDP:
                 mBinding.btnMessageStyle.setTxtContent(getString(R.string.type_newwork));
+                mBinding.btnTtysChooice.setVisibility(View.GONE);
                 break;
             case AppInfo.MESSAGE_TYPE_SERIALPORT:
                 mBinding.btnMessageStyle.setTxtContent(getString(R.string.type_serialport));
+                mBinding.btnTtysChooice.setVisibility(View.VISIBLE);
                 break;
         }
         int ttysPosition = SharedPerManager.getTTysPosition();

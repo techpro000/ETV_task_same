@@ -35,7 +35,7 @@ public class SharedPerManager {
      * 是否自动从网络获取屏幕的行列
      */
     public static boolean getAutoRowCow() {
-        return (boolean) EtvApplication.getInstance().getData("auto_screen_row", true);
+        return (boolean) EtvApplication.getInstance().getData("auto_screen_row", false);
     }
 
     public static void setAutoRowCow(boolean auto) {

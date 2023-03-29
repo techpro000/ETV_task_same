@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.etv.udp.util.ParseMessage;
 import com.etv.util.MyLog;
+import com.etv.util.SharedPerManager;
 import com.udpsync.Command;
 import com.udpsync.bean.CmdData;
 
@@ -26,10 +27,14 @@ public class SerialPort {
     private FileInputStream mFileInputStream;
     private FileOutputStream mFileOutputStream;
     private static final int PORT_RATE = 115200;
-    private static final File PORT_FILE = new File("/dev/ttyS0");
+//    private static final File PORT_FILE = new File("/dev/ttyS0");
 
     public SerialPort(Context context) {
         mContext = context;
+        String serialPort = "/dev/ttyS" + SharedPerManager.getTTysPosition();
+        MyLog.cdl("==初始化串口类型==" + serialPort);
+        File PORT_FILE = new File(serialPort);
+
         if (!PORT_FILE.canRead() || !PORT_FILE.canWrite()) {
             try {
                 Process su;
