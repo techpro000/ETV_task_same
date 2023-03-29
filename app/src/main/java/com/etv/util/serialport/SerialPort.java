@@ -26,7 +26,7 @@ public class SerialPort {
     private FileInputStream mFileInputStream;
     private FileOutputStream mFileOutputStream;
     private static final int PORT_RATE = 115200;
-    private static final File PORT_FILE = new File("/dev/ttyS3");
+    private static final File PORT_FILE = new File("/dev/ttyS0");
 
     public SerialPort(Context context) {
         mContext = context;
@@ -43,7 +43,6 @@ public class SerialPort {
                 e.printStackTrace();
             }
         }
-
         mFd = open(PORT_FILE.getAbsolutePath(), PORT_RATE);
         if (mFd == null) {
             Log.w(TAG, "native open returns null");

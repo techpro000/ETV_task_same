@@ -8,8 +8,7 @@ public class AppConfig {
     public static final int CONSUMER_DEFAULT = 0;
     public static final int CONSUMER_CNIN_MONEY = 1; //长江证券项目
     public static final int CONSUMER_SNGHANG_VIDEO = 2; //圣航视频同步及黑屏问题讨论
-    public static final int CONSUMER_TYPE = CONSUMER_SNGHANG_VIDEO;
-
+    public static final int CONSUMER_TYPE = CONSUMER_DEFAULT;
 
 
     //用来检测当前开机时间是否是正常得时间

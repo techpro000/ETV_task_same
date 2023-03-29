@@ -111,6 +111,14 @@ public class SettingScreenActivity extends SettingBaseActivity {
     }
 
     private void initListener() {
+        mBinding.btnTtysChooice.setOnMoretListener(new MoreButtonListener() {
+            @Override
+            public void clickView(View view) {
+                //选择串口
+                showTtysTypeDialog();
+            }
+        });
+
         mBinding.btnMessageStyle.setOnMoretListener(new MoreButtonListener() {
             @Override
             public void clickView(View view) {
@@ -169,6 +177,28 @@ public class SettingScreenActivity extends SettingBaseActivity {
         mBinding.etCow.addTextChangedListener(inputListener);
     }
 
+    private void showTtysTypeDialog() {
+        RadioListDialog radioListDialog = new RadioListDialog(SettingScreenActivity.this);
+        List<RedioEntity> listShow = new ArrayList<RedioEntity>();
+        listShow.add(new RedioEntity("ttyS0"));
+        listShow.add(new RedioEntity("ttyS1"));
+        listShow.add(new RedioEntity("ttyS2"));
+        listShow.add(new RedioEntity("ttyS3"));
+        listShow.add(new RedioEntity("ttyS4"));
+        listShow.add(new RedioEntity("ttyS5"));
+        int ttysPosition = SharedPerManager.getTTysPosition();
+        radioListDialog.show(getString(R.string.capture_update_height), listShow, ttysPosition);
+        radioListDialog.setRadioChooiceListener(new RadioChooiceListener() {
+            @Override
+            public void backChooiceInfo(RedioEntity redioEntity, int chooicePosition) {
+                MyLog.cdl("===chooicePosition=" + chooicePosition);
+                SharedPerManager.setTTysPosition(chooicePosition);
+                showToastView(getString(R.string.set_success_reboot_start));
+                updateMainView();
+            }
+        });
+    }
+
     private void showMessageTypeDialog() {
         RadioListDialog radioListDialog = new RadioListDialog(SettingScreenActivity.this);
         List<RedioEntity> listShow = new ArrayList<RedioEntity>();
@@ -203,6 +233,8 @@ public class SettingScreenActivity extends SettingBaseActivity {
                 mBinding.btnMessageStyle.setTxtContent(getString(R.string.type_serialport));
                 break;
         }
+        int ttysPosition = SharedPerManager.getTTysPosition();
+        mBinding.btnTtysChooice.setTxtContent("ttyS" + ttysPosition);
     }
 
     private void getRowCowByNetwork() {

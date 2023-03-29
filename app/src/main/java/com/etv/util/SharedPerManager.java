@@ -1060,4 +1060,19 @@ public class SharedPerManager {
         EtvApplication.getInstance().saveData("getMessageType", getMessageType);
     }
 
+
+    private static int TTysPositionBack = -1;
+
+    public static void setTTysPosition(int TTysPosition) {
+        TTysPositionBack = TTysPosition;
+        EtvApplication.getInstance().saveData("TTysPosition", TTysPosition);
+    }
+
+    public static int getTTysPosition() {
+        if (TTysPositionBack != -1) {
+            return TTysPositionBack;
+        }
+        TTysPositionBack = (int) EtvApplication.getInstance().getData("TTysPosition", 0);
+        return TTysPositionBack;
+    }
 }

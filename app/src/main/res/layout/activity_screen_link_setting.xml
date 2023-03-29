@@ -54,6 +54,15 @@
             app:txt_content=""
             app:txt_title="@string/message_type" />
 
+        <com.ys.model.view.SettingClickView
+            android:id="@+id/btn_ttys_chooice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:btn_txt_right="@string/setting_default"
+            app:img_left="@drawable/icon_auto_power"
+            app:txt_content=""
+            app:txt_title="@string/ttys_num" />
+
         <com.ys.model.view.SettingSwitchView
             android:id="@+id/switch_task_main"
             android:layout_width="match_parent"
