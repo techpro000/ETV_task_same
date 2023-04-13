@@ -24,8 +24,6 @@ import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.service.EtvService;
 import com.etv.service.TcpService;
-import com.etv.service.TcpSocketService;
-import com.etv.socket.mine.SocketUtil;
 import com.etv.task.db.DBTaskUtil;
 import com.etv.util.CodeUtil;
 import com.etv.util.MyLog;
@@ -258,14 +256,11 @@ public class ServerConnectFragment extends Fragment implements View.OnClickListe
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             intent.setClass(getActivity(), TcpService.class);
         } else {
-            intent.setClass(getActivity(), TcpSocketService.class);
         }
         getActivity().startService(intent);
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             TcpService.getInstance().dealDisOnlineDev("手动点击连接，先断开，后重连", false);
         } else {
-            SocketUtil.getInstance().sendRegisterMacToServer("注销登录状态", true);
-//            TcpSocketService.getInstance().dealDisOnlineDev("手动点击连接，先断开，后重连", false);
         }
         handler.postDelayed(new Runnable() {
             @Override
@@ -285,20 +280,7 @@ public class ServerConnectFragment extends Fragment implements View.OnClickListe
     }
 
     private void registerDevTcpSocket() {
-        TcpSocketService.getInstance().registerDev(getActivity(), getUsername(), new RegisterDevListener() {
 
-            @Override
-            public void registerDevState(boolean isSuccess, String errorrDesc, int code) {
-                MyLog.message("=====注册成功连接中：" + isSuccess + " /errorrDesc= " + errorrDesc);
-                if (isSuccess) {  //注册success
-                    showToast(getActivity().getString(R.string.regsucc_line));
-                    TcpSocketService.getInstance().dissOrReconnect();
-                } else { //注册失败
-                    showToast(LanguageChangeUtil.getLanguageFromResurceWithPosition(getActivity(), R.string.regfail_line, errorrDesc));
-                }
-            }
-
-        });
     }
 
     /***

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.service.TcpService;
-import com.etv.service.TcpSocketService;
 import com.etv.setting.TaskInfoActivity;
 import com.etv.setting.parsener.TerminallParsener;
 import com.etv.setting.view.TerminallView;
@@ -100,7 +99,6 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             TcpService.getInstance().startLocationService(-1);
         } else {
-            TcpSocketService.getInstance().startLocationService(-1);
         }
         updateView();
     }
@@ -171,7 +169,6 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
                     if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
                         TcpService.getInstance().startLocationService(-1);
                     } else {
-                        TcpSocketService.getInstance().startLocationService(-1);
                     }
                     return;
                 }

@@ -16,7 +16,6 @@ import com.etv.listener.CompressImageListener;
 import com.etv.listener.WriteSdListener;
 import com.etv.service.EtvService;
 import com.etv.service.TcpService;
-import com.etv.service.TcpSocketService;
 import com.etv.task.entity.MediAddEntity;
 import com.etv.task.entity.SceneEntity;
 import com.etv.task.entity.SingleTaskEntity;
@@ -323,8 +322,6 @@ public class SdCheckParsener implements SdCheckListener {
             TcpService.getInstance().dealDisOnlineDev("To modify the IP address of the USB flash disk, disconnect it first and then reconnect it !", true);
             TcpService.getInstance().getDevHartStateInfo(-1, "SD card modify IP");
         } else {
-            TcpSocketService.getInstance().dealDisOnlineDev("To modify the IP address of the USB flash disk, disconnect it first and then reconnect it !", true);
-            TcpSocketService.getInstance().getDevHartStateInfo(-1, "SD card modify IP");
         }
     }
 

@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/activity_screen_link_setting.xml" value="0.25" />
+        <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/activity_screen_link_setting.xml" value="0.2" />
         <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/activity_screen_setting.xml" value="0.16170534813319878" />
         <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/activity_test.xml" value="0.1" />
+        <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/fragment_server_connect.xml" value="0.17527173913043478" />
         <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/fragment_single_work_setting.xml" value="0.23505434782608695" />
         <entry key="..\:/Git_local_new/IPC/etv_task_same/app/src/main/res/layout/setting_screen_show.xml" value="0.23505434782608695" />
       </map>

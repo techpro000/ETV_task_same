@@ -11,7 +11,6 @@ import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.service.EtvService;
 import com.etv.service.TcpService;
-import com.etv.service.TcpSocketService;
 import com.etv.setting.GuardianActivity;
 import com.etv.setting.InterestActivity;
 import com.etv.util.CodeUtil;
@@ -49,7 +48,6 @@ public class SplashLowActivity extends SplashBaseActivity {
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             startService(new Intent(SplashLowActivity.this, TcpService.class));
         } else {
-            startService(new Intent(SplashLowActivity.this, TcpSocketService.class));
         }
         lineToWeb();
         handler.sendEmptyMessageDelayed(CHECK_LOGIN_STATUS, 6000);
@@ -85,7 +83,6 @@ public class SplashLowActivity extends SplashBaseActivity {
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             TcpService.getInstance().lineSockeyWebServer();
         } else {
-            TcpSocketService.getInstance().lineSockeyWebServer("SplashLowActivity 进行服务器连接");
         }
     }
 

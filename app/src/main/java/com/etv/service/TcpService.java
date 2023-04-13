@@ -25,7 +25,6 @@ import com.etv.service.parsener.TcpParsener;
 import com.etv.service.view.TcpHartStatuesListener;
 import com.etv.service.view.TcpPowerOnOffListener;
 import com.etv.setting.InterestActivity;
-import com.etv.socket.mine.SocketUtil;
 import com.etv.socket.online.SiteWebsocket;
 import com.etv.socket.online.SocketWebListener;
 import com.etv.task.db.DBTaskUtil;

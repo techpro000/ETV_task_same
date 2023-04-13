@@ -190,7 +190,6 @@
             android:enabled="true"
             android:process=":remote" />
         <service android:name="com.etv.service.TcpService" />
-        <service android:name="com.etv.service.TcpSocketService" />
         <service android:name="com.etv.service.EtvService" />
         <service android:name="com.etv.service.TaskWorkService" />
 

@@ -1,6 +1,5 @@
 package com.etv.config;
 
-import com.etv.entity.RegisterEntity;
 import com.etv.util.CodeUtil;
 import com.etv.util.MyLog;
 import com.etv.util.SharedPerManager;
@@ -20,49 +19,6 @@ public class ApiInfo {
         String key = CodeUtil.getUniquePsuedoID();
         key = key.substring(0, 16);
         return key;
-    }
-
-    //    设备注册发： 1#
-//    server 回：2#'o''k'
-//    心跳发：3#
-//    回复心跳：4#'h'
-//    发数据：5#数据
-//    发送后 6#
-    public static RegisterEntity getRegisteMessageAddNum() {
-        RegisterEntity registerEntity = null;
-        String macAddress = CodeUtil.getUniquePsuedoID();
-        byte[] srtbyte = macAddress.getBytes();
-        boolean registeSuccess = true;
-        for (int k = 0; k < srtbyte.length; k++) {
-            if ((srtbyte[k] > 47 && srtbyte[k] < 58) || (srtbyte[k] > 96 && srtbyte[k] < 123) || (srtbyte[k] > 64 && srtbyte[k] < 91)) {
-                // '0'48-'9'57  'a'97-'z'122 'A'65-'Z' 90
-                continue;
-            }
-            //reboot
-            registeSuccess = false;
-        }
-        if (!registeSuccess) {
-            MyLog.cdl("====getRegisteMessageAddNum====数据不合格==");
-            registerEntity = new RegisterEntity("MAC is not legal", null);
-            return registerEntity;
-        }
-        MyLog.cdl("====getRegisteMessageAddNum====数据合格执行拼接加密过程==");
-        byte[] byteRegister = new byte[srtbyte.length + 4];
-        byteRegister[0] = 1;
-        byteRegister[1] = 35;
-        byteRegister[2] = (byte) (srtbyte.length & 0xFF);
-        byteRegister[3] = 35;
-        for (int i = 4; i < srtbyte.length + 4; i++) {
-            byteRegister[i] = srtbyte[i - 4];
-        }
-        if (byteRegister.length > 28) {
-            //reboot
-            MyLog.cdl("====getRegisteMessageAddNum====数据超过28位数了，拦截操作==");
-            registerEntity = new RegisterEntity("The LENGTH of the MAC address is invalid !", null);
-            return registerEntity;
-        }
-        registerEntity = new RegisterEntity("Get Mac Success ", byteRegister);
-        return registerEntity;
     }
 
     /***

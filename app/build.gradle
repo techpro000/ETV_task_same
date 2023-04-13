@@ -9,7 +9,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 13
-        versionName "V5.3.1.3"
+        versionName "V5.3.1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
@@ -109,7 +109,6 @@ dependencies {
     //压缩包
     implementation files('libs/zip4j-1.3.1.jar')
     implementation 'androidx.multidex:multidex:2.0.0'
-//    implementation 'com.gitee.shotter_admin:base-mudel:1.1.7'
     implementation project(path: ':BaseModel')
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'

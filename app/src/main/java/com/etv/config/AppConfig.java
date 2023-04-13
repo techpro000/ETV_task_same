@@ -29,11 +29,6 @@ public class AppConfig {
     public static boolean isOnline = false;
 
     /***
-     * 地图定位的间隔时间
-     */
-    public static final int BAIDU_MAP_LOCATION = 1000 * 10;
-
-    /***
      * 回到主界面，自动检查播放
      */
     public static int CHECK_TIMER_TO_PLAY() {
