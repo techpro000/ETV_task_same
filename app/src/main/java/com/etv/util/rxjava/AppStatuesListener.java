@@ -27,6 +27,11 @@ public class AppStatuesListener extends ViewModel {
         return instance;
     }
 
+    public static final int LIVE_DATA_POWERONOFF = 5566;  //定时开关机设置完成，这里需要刷新界面
+    public static final int LIVE_DATA_SCREEN_CATPTURE = 5567;  //开始截图得通知
+
+    public MutableLiveData<Integer> objectLiveDate = new MutableLiveData<Integer>();
+
     //网络变化
     public MutableLiveData<Boolean> NetChange = new MutableLiveData<Boolean>();
     // 用来更新系统时间得

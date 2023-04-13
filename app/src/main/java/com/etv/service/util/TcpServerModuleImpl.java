@@ -12,8 +12,10 @@ import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.db.DbBggImageUtil;
 import com.etv.db.DbDevMedia;
+import com.etv.db.DbFontInfo;
 import com.etv.entity.BggImageEntity;
 import com.etv.entity.ControlMediaVoice;
+import com.etv.entity.FontEntity;
 import com.etv.entity.PowerOnOffEntity;
 import com.etv.entity.ScreenEntity;
 import com.etv.entity.TimedTaskListEntity;
@@ -773,6 +775,42 @@ public class TcpServerModuleImpl implements TcpServerModule {
                 });
     }
 
+    @Override
+    public void getProjectFontInfoFromWeb(String id) {
+        String requestUrl = ApiInfo.getFontRequestInfo();
+        OkHttpUtils
+            .get()
+            .url(requestUrl)
+            .build()
+            .execute(new StringCallback() {
+                @Override
+                public void onError(Call call, String errorDesc, int id) {
+                }
+
+                @Override
+                public void onResponse(String json, int id) {
+                    if (json == null || json.length() < 5) {
+                        return;
+                    }
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+                        int code = jsonObject.getInt("code");
+                        if (code != 0) {
+                            return;
+                        }
+                        String data = jsonObject.getString("data");
+                        if (data == null || data.length() < 5) {
+                            //获取得数据==null
+                            return;
+                        }
+                        parsenerFontTextInfo(data);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+    }
+
 
     private void backListener(boolean isSuccess, Object object, String
             errorrDesc, TaskChangeListener listener) {
@@ -939,5 +977,43 @@ public class TcpServerModuleImpl implements TcpServerModule {
         });
         runnable.setImagePosition(displayPosition);
         EtvService.getInstance().executor(runnable);
+    }
+
+    /***
+     * 解析字体库
+     * @param data
+     */
+    private void parsenerFontTextInfo(String data) {
+        MyLog.db("========字体信息保存状态==json=" + data);
+        try {
+            JSONArray jsonArray = new JSONArray(data);
+            int num = jsonArray.length();
+            if (num < 1) {
+                return;
+            }
+            List<FontEntity> localFontSize = DbFontInfo.getFontInfoList();
+            if (localFontSize != null && localFontSize.size() > 0) {
+                if (localFontSize.size() == num) {
+                    MyLog.db("====数据是一样得，不用重复添加=====");
+                    return;
+                }
+            }
+            DbFontInfo.clearAllData();
+            for (int i = 0; i < num; i++) {
+                JSONObject jsonDate = jsonArray.getJSONObject(i);
+                int fontId = jsonDate.getInt("id");
+                String fontName = jsonDate.getString("fontName");
+                long fontSize = jsonDate.getLong("fontSize");
+                String downUrl = jsonDate.getString("downUrl");
+                String createTime = jsonDate.getString("createTime");
+                String downName = jsonDate.getString("downName");
+                FontEntity fontEntity = new FontEntity(fontId, fontName, fontSize, downUrl, downName, createTime);
+                boolean isSave = DbFontInfo.saveFontInfoToLocal(fontEntity);
+                MyLog.db("========字体信息保存状态===" + isSave + "  /" + fontEntity.toString());
+            }
+        } catch (Exception e) {
+            MyLog.db("========字体信息保存状态error===" + e.toString());
+            e.printStackTrace();
+        }
     }
 }

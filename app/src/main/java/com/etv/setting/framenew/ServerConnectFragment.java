@@ -24,6 +24,7 @@ import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.service.EtvService;
 import com.etv.service.TcpService;
+import com.etv.service.TcpSocketService;
 import com.etv.task.db.DBTaskUtil;
 import com.etv.util.CodeUtil;
 import com.etv.util.MyLog;
@@ -119,7 +120,7 @@ public class ServerConnectFragment extends Fragment implements View.OnClickListe
             public void click(View view, boolean b) {
                 if (b) {
                     SharedPerManager.setWebHost(ApiInfo.IP_DEFAULT_URL_SOCKET);
-                    SharedPerManager.setSocketType(1);
+                    SharedPerManager.setSocketType(AppConfig.SOCKEY_TYPE_SOCKET);
                     String userName = SharedPerManager.getUserName();
                     if (TextUtils.isEmpty(userName) || userName.contains("Null")) {
                         userName = "admin";
@@ -127,7 +128,7 @@ public class ServerConnectFragment extends Fragment implements View.OnClickListe
                     SharedPerManager.setUserName(userName, "切换连接方式");
                 } else {
                     SharedPerManager.setWebHost(ApiInfo.IP_DEFAULT_URL_WEBSOCKET);
-                    SharedPerManager.setSocketType(0);
+                    SharedPerManager.setSocketType(AppConfig.SOCKEY_TYPE_WEBSOCKET);
                 }
                 updateAutoLineView();
                 showRebootDialog();
@@ -256,11 +257,13 @@ public class ServerConnectFragment extends Fragment implements View.OnClickListe
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             intent.setClass(getActivity(), TcpService.class);
         } else {
+            intent.setClass(getActivity(), TcpSocketService.class);
         }
         getActivity().startService(intent);
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             TcpService.getInstance().dealDisOnlineDev("手动点击连接，先断开，后重连", false);
         } else {
+            TcpSocketService.getInstance().dealDisOnlineDev("手动点击连接，先断开，后重连", false);
         }
         handler.postDelayed(new Runnable() {
             @Override

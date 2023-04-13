@@ -15,6 +15,13 @@ public class AppInfo {
     public static final String CAPTURE_MAIN = AppInfo.BASE_PATH_INNER + "/capture.jpg";
     public static final String CAPTURE_SECOND = AppInfo.BASE_PATH_INNER + "/capture_second.jpg";
 
+    //网络模式
+    public static final int WORK_MODEL_NET = 0;
+    //网络导出
+    public static final int WORK_MODEL_NET_DOWN = 1;
+    //单机模式
+    public static final int WORK_MODEL_SINGLE = 2;
+
     //验证程序是否起来了
     public static boolean isAppRun = false;
     //设备是否已经注册到服务器
@@ -31,6 +38,9 @@ public class AppInfo {
     //    etv-start.txt
     public static final String VOICE_MEDIA = "etv-welcome.mp3";
     public static final String WELCOME_SAVE_PATH = BASE_PATH_INNER + "/Android/welcome.mp3";
+
+    //客户定制 type类型
+    public static final int MESSAGE_TYPE_CUSTOM_MADE = 6666;
 
     //是否可以检测定时任务
     public static boolean startCheckTaskTag = false;

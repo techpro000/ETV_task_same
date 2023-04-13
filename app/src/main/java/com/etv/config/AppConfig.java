@@ -16,6 +16,10 @@ public class AppConfig {
 
     // 软件是否打印日志
     public static final boolean IF_PRINT_LOG = true;
+    /***
+     * 是否已经初始化腾讯socket的sdk
+     */
+    public static boolean isInitedTimSDK = false;
 
     /***
      * Socket 连接方式

@@ -162,8 +162,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:layout_marginRight="40dp"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/internet_server_txt"

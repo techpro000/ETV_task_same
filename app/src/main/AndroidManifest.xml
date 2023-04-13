@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ys.etv">
     <!--android:sharedUserId="android.uid.system"-->
 
@@ -80,6 +81,7 @@
 
     <application
         android:name="com.EtvApplication"
+        tools:replace="android:allowBackup"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/app_icon_green"
@@ -190,6 +192,7 @@
             android:enabled="true"
             android:process=":remote" />
         <service android:name="com.etv.service.TcpService" />
+        <service android:name="com.etv.service.TcpSocketService" />
         <service android:name="com.etv.service.EtvService" />
         <service android:name="com.etv.service.TaskWorkService" />
 

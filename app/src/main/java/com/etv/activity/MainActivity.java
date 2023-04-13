@@ -24,6 +24,7 @@ import com.etv.config.AppInfo;
 import com.etv.db.DbBggImageUtil;
 import com.etv.service.TaskWorkService;
 import com.etv.service.TcpService;
+import com.etv.service.TcpSocketService;
 import com.etv.task.activity.PlayerTaskActivity;
 import com.etv.task.activity.TaskActivity;
 import com.etv.task.entity.TaskWorkEntity;
@@ -229,6 +230,7 @@ public class MainActivity extends TaskActivity implements
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             TcpService.getInstance().startLocationService(1);
         } else {
+            TcpSocketService.getInstance().startLocationService(1);
         }
         if (Biantai.isMainOnResume()) {
             return;

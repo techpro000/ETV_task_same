@@ -272,5 +272,14 @@ public class ApiInfo {
         return address;
     }
 
-
+    /***
+     * 请求节目字体得接口
+     * selectFontInfo
+     * 参数：id（非必填）
+     * @return
+     */
+    public static String getFontRequestInfo() {
+//        selectFontInfo 参数：id（非必填）
+        return WEB_BASE_URL() + "/webservice/selectFontInfo";
+    }
 }

@@ -1075,4 +1075,35 @@ public class SharedPerManager {
         TTysPositionBack = (int) EtvApplication.getInstance().getData("TTysPosition", 0);
         return TTysPositionBack;
     }
+
+    /***
+     * 获取工作模式
+     * @return
+     * 0 :网络模式
+     * 1 :网络下发
+     * 2 :单机模式
+     */
+
+    public static int WORKMODELBACK = -1;
+
+    public static int getWorkModel() {
+        if (WORKMODELBACK != -1) {
+            return WORKMODELBACK;
+        }
+        int workmldeo = ((int) EtvApplication.getInstance().getData("workModel", AppInfo.WORK_MODEL_NET));
+        WORKMODELBACK = workmldeo;
+        return workmldeo;
+    }
+
+    public static void setWorkModel(int workModel, String printTag) {
+        if (workModel == AppInfo.WORK_MODEL_NET) {
+            MyLog.cdl("切换工作模式==网络下发 /" + printTag, true);
+        } else if (workModel == AppInfo.WORK_MODEL_NET_DOWN) {
+            MyLog.cdl("切换工作模式==网络导出 /" + printTag, true);
+        } else if (workModel == AppInfo.WORK_MODEL_SINGLE) {
+            MyLog.cdl("切换工作模式==单机模式 /" + printTag, true);
+        }
+        WORKMODELBACK = workModel;
+        EtvApplication.getInstance().saveData("workModel", workModel);
+    }
 }

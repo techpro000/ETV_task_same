@@ -25,6 +25,7 @@ import com.etv.util.rxjava.AppStatuesListener;
 import com.etv.util.sdcard.FileFilter;
 import com.etv.util.sdcard.MySDCard;
 import com.etv.util.system.PowerOnOffUtil;
+import com.etv.util.tts.TtsManager;
 
 import java.io.File;
 import java.util.List;
@@ -348,4 +349,29 @@ public class TcpParsener {
         listener.updateTime();
     }
 
+    /**
+     * 获取字体信息
+     */
+    public void getProjectFontInfoFromWeb(String printTag) {
+        initOther();
+        tcpServerModule.getProjectFontInfoFromWeb(printTag);
+    }
+
+    /****
+     * 语音TTS
+     * @param tts
+     */
+    TtsManager ttsManager;
+
+    public void startToSpeak(String tts) {
+        MyLog.tts("======startToSpeak=====add=" + tts, true);
+        initOther();
+        ttsManager.addSpeechMessageToList(tts);
+    }
+
+    public void stopToSpeakMessage() {
+        MyLog.cdl("停止TTS语音", true);
+        initOther();
+        ttsManager.stop();
+    }
 }

@@ -14,6 +14,7 @@ import com.etv.config.AppInfo;
 import com.etv.service.EtvService;
 import com.etv.service.TaskWorkService;
 import com.etv.service.TcpService;
+import com.etv.service.TcpSocketService;
 import com.etv.util.MyLog;
 import com.etv.util.SharedPerManager;
 import com.etv.util.SharedPerUtil;
@@ -75,6 +76,7 @@ public class BaseActivity extends AppCompatActivity {
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             startService(new Intent(BaseActivity.this, TcpService.class));
         } else {
+            startService(new Intent(BaseActivity.this, TcpSocketService.class));
         }
         startService(new Intent(BaseActivity.this, TaskWorkService.class));
     }
@@ -183,6 +185,7 @@ public class BaseActivity extends AppCompatActivity {
         if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
             stopService(new Intent(BaseActivity.this, TcpService.class));
         } else {
+            stopService(new Intent(BaseActivity.this, TcpSocketService.class));
         }
         stopService(new Intent(BaseActivity.this, EtvService.class));
         stopService(new Intent(BaseActivity.this, TaskWorkService.class));

@@ -12,6 +12,7 @@ import com.etv.config.AppInfo;
 import com.etv.http.util.CheckTimeRunnable;
 import com.etv.service.EtvService;
 import com.etv.service.TcpService;
+import com.etv.service.TcpSocketService;
 import com.etv.service.listener.EtvServerListener;
 import com.etv.service.util.EtvServerModule;
 import com.etv.service.util.EtvServerModuleImpl;
@@ -53,6 +54,7 @@ public class InitPansener {
                 if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
                     TcpService.getInstance().dealPowernOff();
                 } else {
+                    TcpSocketService.getInstance().dealPowernOff();
                 }
             } else { //没有网络,从数据库中获取
                 MyLog.powerOnOff("0000==============网络模式，没有网络去同步本地时间===", true);
