@@ -38,11 +38,9 @@ public class SettingMenuDialog implements OnClickListener {
     Button btn_work_model;
     Button btn_exit;
     RelativeLayout rela_dialog_bgg;
-    ImageView iv_qr_code_scan;
     TextView tv_ip, tv_mac, tv_version_sys, tv_version_app, tv_nickname, tv_line_type;
-    LinearLayout lin_wechat_code, lin_bind_ercode, lin_bottom_info, lin_all_qrcode;
+    LinearLayout lin_wechat_code, lin_bottom_info;
     ImageView iv_qr_code_chat;
-    TextView tv_scan_view;
 
     public SettingMenuDialog(Context context) {
         this.context = context;
@@ -52,7 +50,6 @@ public class SettingMenuDialog implements OnClickListener {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(SharedPerManager.getScreenWidth(), SharedPerManager.getScreenHeight());
         dialog.setContentView(dialog_view, params);
         dialog.setCancelable(true); // true点击屏幕以外关闭dialog
-        iv_qr_code_scan = (ImageView) dialog_view.findViewById(R.id.iv_qr_code_scan);
         btn_work_model = (Button) dialog_view.findViewById(R.id.btn_work_model);
         btn_exit = (Button) dialog_view.findViewById(R.id.btn_exit);
         rela_dialog_bgg = (RelativeLayout) dialog_view.findViewById(R.id.rela_dialog_bgg);
@@ -62,16 +59,13 @@ public class SettingMenuDialog implements OnClickListener {
         tv_version_app = (TextView) dialog_view.findViewById(R.id.tv_version_app);
         tv_nickname = (TextView) dialog_view.findViewById(R.id.tv_nickname);
         tv_line_type = (TextView) dialog_view.findViewById(R.id.tv_line_type);
-        tv_scan_view = (TextView) dialog_view.findViewById(R.id.tv_scan_view);
         iv_qr_code_chat = (ImageView) dialog_view.findViewById(R.id.iv_qr_code_chat);
         rela_dialog_bgg.setOnClickListener(this);
         btn_work_model.setOnClickListener(this);
         btn_exit.setOnClickListener(this);
         btn_work_model.requestFocus();
         lin_wechat_code = (LinearLayout) dialog_view.findViewById(R.id.lin_wechat_code);
-        lin_bind_ercode = (LinearLayout) dialog_view.findViewById(R.id.lin_bind_ercode);
         lin_bottom_info = (LinearLayout) dialog_view.findViewById(R.id.lin_bottom_info);
-        lin_all_qrcode = (LinearLayout) dialog_view.findViewById(R.id.lin_all_qrcode);
         lin_wechat_code.setVisibility(View.VISIBLE);
         iv_qr_code_chat.setBackgroundResource(R.mipmap.icon_etv_code);
     }
@@ -105,7 +99,6 @@ public class SettingMenuDialog implements OnClickListener {
             String socket_type = SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET ? "WebSocket" : "Socket";
             tv_line_type.setText(socket_type + "-SAME");
             dialog.show();
-            createErCode();
             handler.sendEmptyMessageDelayed(DISSMISS_DIALOG_AUTO, 15 * 1000);
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,9 +108,6 @@ public class SettingMenuDialog implements OnClickListener {
     public void dissmiss() {
         try {
             handler.removeMessages(DISSMISS_DIALOG_AUTO);
-            if (iv_qr_code_scan != null) {
-                GlideImageUtil.clearViewCache(iv_qr_code_scan);
-            }
             if (dialog != null && dialog.isShowing()) {
                 dialog.dismiss();
             }
@@ -126,34 +116,6 @@ public class SettingMenuDialog implements OnClickListener {
         }
     }
 
-    String imagePath = AppInfo.ER_CODE_PATH();
-
-    private void createErCode() {
-        String devCode = CodeUtil.getUniquePsuedoID();
-        String ipConnect = SharedPerUtil.getWebHostIpAddress();
-        String isLine = "-1";
-        if (AppConfig.isOnline) {
-            isLine = "1";
-        } else {
-            isLine = "-1";
-        }
-        String nickName = SharedPerManager.getDevNickName();
-        String guardianCode = "{\"type\":\"bind\",\"code\":\"" + devCode + "\",\"ip\":\"" + ipConnect + "\",\"isLine\":\"" + isLine + "\",\"nickName\":\"" + nickName + "\"}";
-        MyLog.cdl("====生成二维码===start===" + System.currentTimeMillis() + " / " + guardianCode);
-        QRCodeUtil qrCodeUtil = new QRCodeUtil(context, new QRCodeUtil.ErCodeBackListener() {
-
-            @Override
-            public void createErCodeState(String errorDes, boolean isCreate, String path) {
-                MyLog.cdl("====生成二维码===" + System.currentTimeMillis() + " / " + errorDes + " / " + isCreate + " / " + path);
-                if (isCreate) {
-                    GlideImageUtil.loadImageNoCache(context, imagePath, iv_qr_code_scan);
-                } else {
-                    MyToastView.getInstance().Toast(context, "创建二维码失败");
-                }
-            }
-        });
-        qrCodeUtil.createErCode(guardianCode, imagePath);
-    }
 
     public void setOnDialogClickListener(SettingMenuClickListener listener) {
         this.listener = listener;

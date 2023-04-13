@@ -21,37 +21,6 @@ public class ApiInfo {
         return key;
     }
 
-    /***
-     * 服务器发过来得335
-     * 这里需要回435
-     * @return
-     */
-    public static final byte[] getHearBacktMessage() {
-        byte[] macInfo = new byte[]{4, 35, 104};
-        return AESTool.EncryptString(macInfo);
-    }
-
-    /***
-     * 获取心跳指令
-     * @return
-     */
-    public static final byte[] getHeartMessage() {
-        byte[] macInfo = new byte[]{3, 35, 104};
-        return AESTool.EncryptString(macInfo);
-    }
-
-    /***
-     * 设备收到指令，反馈给服务器
-     * @return
-     */
-    public static final byte[] getOrderMessageBack(String id) {
-        MyLog.netty("===反馈order===" + id);
-//        byte[] orderMessageBack = new byte[]{6, 35, 104};
-        String mac = "#" + id;
-        byte[] orderMessageBack = TextUtils.getOrderBackMessage(mac);
-        return AESTool.EncryptString(orderMessageBack);
-    }
-
     public static String getWebIpHost() {
         return SharedPerUtil.getWebHostIpAddress();
     }

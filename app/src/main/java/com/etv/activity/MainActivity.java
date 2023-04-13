@@ -22,42 +22,28 @@ import com.etv.activity.view.MainView;
 import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.db.DbBggImageUtil;
-import com.etv.http.util.GetFileInfoFromPathRunnable;
-import com.etv.service.EtvService;
 import com.etv.service.TaskWorkService;
 import com.etv.service.TcpService;
-import com.etv.setting.InterestActivity;
 import com.etv.task.activity.PlayerTaskActivity;
 import com.etv.task.activity.TaskActivity;
 import com.etv.task.entity.TaskWorkEntity;
 import com.etv.task.model.TaskGetDbListener;
 import com.etv.task.model.TaskModelUtil;
 import com.etv.task.model.TaskModelmpl;
-import com.etv.util.APKUtil;
 import com.etv.util.Biantai;
-import com.etv.util.CodeUtil;
 import com.etv.util.MyLog;
 import com.etv.util.NetWorkUtils;
-import com.etv.util.RootCmd;
 import com.etv.util.SharedPerManager;
 import com.etv.util.SharedPerUtil;
 import com.etv.util.ViewSizeChange;
 import com.etv.util.guardian.GuardianUtil;
 import com.etv.util.image.glide.GlideImageUtil;
 import com.etv.util.rxjava.AppStatuesListener;
-import com.etv.util.rxjava.RxBus;
-import com.etv.util.rxjava.SchedulerTransformer;
-import com.etv.util.rxjava.event.RxEvent;
-import com.etv.util.system.CpuModel;
-import com.etv.util.system.SystemManagerInstance;
 import com.etv.view.dialog.SettingMenuDialog;
 import com.ys.etv.R;
-import com.ys.rkapi.Utils.TimeUtils;
 
 import java.io.File;
 import java.util.List;
-
-import io.reactivex.functions.Consumer;
 
 /***
  * 程序主界面，
