@@ -16,142 +16,149 @@
         <TextView style="@style/setting_exit_txt" />
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="700dp"
         android:layout_height="0dp"
         android:layout_marginTop="56dp"
-        android:background="@drawable/write_yj"
-        android:orientation="vertical"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent=".73"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lin_exit">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_dev_zhuci"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
-
-        <com.ys.model.view.SettingSwitchView
-            android:id="@+id/switch_way"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:img_left_switch="@drawable/ter_icon_screen"
-            app:txt_content_switch=""
-            app:txt_title_switch="@string/str_auto" />
-
-        <com.ys.model.view.SettingClickView
-            android:id="@+id/btn_message_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_txt_right="@string/setting_default"
-            app:img_left="@drawable/icon_auto_power"
-            app:txt_content=""
-            app:txt_title="@string/message_type" />
-
-        <com.ys.model.view.SettingClickView
-            android:id="@+id/btn_ttys_chooice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:btn_txt_right="@string/setting_default"
-            app:img_left="@drawable/icon_auto_power"
-            app:txt_content=""
-            app:txt_title="@string/ttys_num" />
-
-        <com.ys.model.view.SettingSwitchView
-            android:id="@+id/switch_task_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:img_left_switch="@drawable/ter_icon_screen"
-            app:txt_content_switch=""
-            app:txt_title_switch="@string/task_same_name" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/screen_show_style"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center_horizontal">
+            android:layout_height="match_parent"
+            android:background="@drawable/write_yj"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="@string/row_nums"
+                android:text="@string/str_dev_zhuci"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
-            <Button
-                android:id="@+id/et_row"
-                style="@style/termnal_setting_button"
-                android:layout_marginLeft="8dp" />
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_way"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:img_left_switch="@drawable/ter_icon_screen"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/str_auto" />
 
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_message_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/icon_auto_power"
+                app:txt_content=""
+                app:txt_title="@string/message_type" />
+
+            <com.ys.model.view.SettingClickView
+                android:id="@+id/btn_ttys_chooice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:btn_txt_right="@string/setting_default"
+                app:img_left="@drawable/icon_auto_power"
+                app:txt_content=""
+                app:txt_title="@string/ttys_num" />
+
+            <com.ys.model.view.SettingSwitchView
+                android:id="@+id/switch_task_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:img_left_switch="@drawable/ter_icon_screen"
+                app:txt_content_switch=""
+                app:txt_title_switch="@string/task_same_name" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="66dp"
-                android:text="@string/cow_nums"
+                android:layout_marginTop="12dp"
+                android:text="@string/screen_show_style"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
-            <Button
-                android:id="@+id/et_cow"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/row_nums"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/et_row"
+                    style="@style/termnal_setting_button"
+                    android:layout_marginLeft="8dp" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="66dp"
+                    android:text="@string/cow_nums"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/et_cow"
+                    style="@style/termnal_setting_button"
+                    android:layout_marginLeft="8dp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="6dp"
+                android:background="#DDDDDD" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/show_play_area"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/bt_save"
                 style="@style/termnal_setting_button"
-                android:layout_marginLeft="8dp" />
-
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:text="@string/save" />
 
         </LinearLayout>
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="6dp"
-            android:background="#DDDDDD" />
+    </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/show_play_area"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/bt_save"
-            style="@style/termnal_setting_button"
-            android:layout_gravity="right"
-            android:gravity="center"
-            android:text="@string/save" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
