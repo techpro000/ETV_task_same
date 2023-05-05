@@ -860,18 +860,6 @@ public class TaskDealUtil {
      */
     public static Generator getVideoPlayView(Activity context, CpListEntity cpEntity, int leftPosition, int topPosition, int width, int height, List<MediAddEntity> videoList, String programPositionMain) {
         Generator generatorView = null;
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            int screenWidth = SharedPerManager.getScreenWidth();
-            int screenHeight = SharedPerManager.getScreenHeight();
-            if (screenWidth > screenHeight) {    //横屏
-                MyLog.video("======screen=====M11===横屏==Surface");
-                generatorView = new ViewVideoSurfaceGenertrator(context, cpEntity, leftPosition, topPosition, width, height, videoList, AppInfo.PROGRAM_POSITION_MAIN);
-            } else {
-                MyLog.video("=====screen======M11===竖屏==textUreView");
-                generatorView = new ViewVideoGenertrator(context, cpEntity, leftPosition, topPosition, width, height, videoList, AppInfo.PROGRAM_POSITION_MAIN);
-            }
-            return generatorView;
-        }
         boolean Support = SharedPerManager.getVideoMoreSize();
         MyLog.playTask("====视频的坐标的坐标==4k support=" + Support + " / videoList=" + videoList.get(0).getUrl());
         if (Support) {

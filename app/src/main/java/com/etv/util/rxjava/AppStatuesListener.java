@@ -4,9 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.etv.task.entity.DownStatuesEntity;
-import com.etv.task.entity.SameTaskEntity;
-import com.etv.test.SameTaskVideo;
-import com.etv.test.StartUploadEntity;
 import com.udpsync.bean.CmdData;
 
 /***

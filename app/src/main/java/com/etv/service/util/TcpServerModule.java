@@ -50,6 +50,4 @@ public interface TcpServerModule {
      *            location   修改定位信息
      */
     void updateDevInformation(Context context, String tag);
-
-    void getProjectFontInfoFromWeb(String id);
 }

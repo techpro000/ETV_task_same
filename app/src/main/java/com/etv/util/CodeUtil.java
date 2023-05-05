@@ -272,13 +272,6 @@ public class CodeUtil {
             if (TextUtils.isEmpty(version) || version.length() < 2) {
                 return "-获取失败-";
             }
-            MyLog.cdl("====version===cpuMpdel==" + cpuMpdel);
-            if (cpuMpdel.contains(CpuModel.CPU_MODEL_PX30)) {
-                return version;
-            }
-            if (cpuMpdel.startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-                return version;
-            }
             MyLog.cdl("====version===123==" + version);
             //前面得应为全部都不要了
             version = version.substring(version.indexOf("20"));

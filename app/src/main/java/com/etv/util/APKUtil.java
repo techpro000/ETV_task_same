@@ -76,15 +76,6 @@ public class APKUtil {
      * @param context
      */
     public static void openFileManagerApk(Context context) {
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            String packageName = "com.jrm.localmm";
-            Intent parama96 = new Intent("android.intent.action.MAIN");
-            parama96.addCategory("android.intent.category.LAUNCHER");
-            parama96.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            parama96.setComponent(new ComponentName(packageName, packageName + ".ui.main.FileBrowserActivity"));
-            context.startActivity(parama96);
-            return;
-        }
         if (APKUtil.ApkState(context, "com.android.rockchip")) {
             Intent param = new Intent("android.intent.action.MAIN");
             param.addCategory("android.intent.category.LAUNCHER");

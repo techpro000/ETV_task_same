@@ -63,9 +63,6 @@ public class ScreenSettingActivity extends SettingBaseActivity implements View.O
     }
 
     private void updateMainView() {
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            mBingding.switchOpenPower.setVisibility(View.GONE);
-        }
         boolean isBackLightOpen = SystemManagerInstance.getInstance(ScreenSettingActivity.this).getBackLightTtatues("屏幕设置界面");
         MyLog.e("light", "======当前背光的状态===" + isBackLightOpen);
         mBingding.switchOpenPower.setSwitchStatues(isBackLightOpen);
@@ -142,14 +139,10 @@ public class ScreenSettingActivity extends SettingBaseActivity implements View.O
 
     private void updateBlightInfo() {
         int lightProgress = 0;
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            lightProgress = Settings.Global.getInt(getContentResolver(), "picture_backlight", 0);
-        } else {
-            int lightNum = SystemManagerUtil.getSystemBrightness(ScreenSettingActivity.this);
-            MyLog.cdl("===获取得屏幕亮度===" + lightNum);
-            int max = 255;
-            lightProgress = lightNum * 100 / max;
-        }
+        int lightNum = SystemManagerUtil.getSystemBrightness(ScreenSettingActivity.this);
+        MyLog.cdl("===获取得屏幕亮度===" + lightNum);
+        int max = 255;
+        lightProgress = lightNum * 100 / max;
         mBingding.seekLight.setProgressNum(lightProgress);
     }
 
@@ -189,12 +182,8 @@ public class ScreenSettingActivity extends SettingBaseActivity implements View.O
      */
     public int getScreenRoate() {
         int roateNum = 0;
-        if (CpuModel.ISRK312X()) {
-            roateNum = SystemManagerUtil.getScreenRoate(ScreenSettingActivity.this);
-        } else {
-            String roate = RootCmd.getProperty(RootCmd.PROOERTY_INFO, "0");
-            roateNum = Integer.parseInt(roate);
-        }
+        String roate = RootCmd.getProperty(RootCmd.PROOERTY_INFO, "0");
+        roateNum = Integer.parseInt(roate);
         return roateNum;
     }
 

@@ -104,9 +104,6 @@ public class SharedPerManager {
      */
     public static boolean getVideoMoreSize() {
         boolean isDefaultEnable = false;
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            isDefaultEnable = true;
-        }
         boolean VideoMoreSize = (boolean) EtvApplication.getInstance().getData("VideoMoreSize", isDefaultEnable);
         return VideoMoreSize;
     }
@@ -921,9 +918,6 @@ public class SharedPerManager {
      */
     public static boolean getScreenSame() {
         boolean isDefault = true;
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            isDefault = false;
-        }
         return ((boolean) EtvApplication.getInstance().getData("isScreenSame", isDefault));
     }
 

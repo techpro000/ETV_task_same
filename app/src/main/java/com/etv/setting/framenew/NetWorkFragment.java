@@ -97,11 +97,6 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
         editTextDialog = new EditTextDialog(getActivity());
         terminallPansener = new TerminallParsener(getActivity(), this);
         terminallPansener.queryNickName();
-        if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
-            TcpService.getInstance().startLocationService(-1);
-        } else {
-            TcpSocketService.getInstance().startLocationService(-1);
-        }
         updateView();
     }
 
@@ -168,11 +163,6 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
                 boolean isWifiOpen = WifiMgr.getInstance(getActivity()).isWifiEnable();
                 if (isWifiOpen) {
                     SharedPerManager.setAutoLocation(true);
-                    if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
-                        TcpService.getInstance().startLocationService(-1);
-                    } else {
-                        TcpSocketService.getInstance().startLocationService(-1);
-                    }
                     return;
                 }
                 showOpenWifiDialog();

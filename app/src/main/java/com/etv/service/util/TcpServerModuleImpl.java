@@ -12,10 +12,8 @@ import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
 import com.etv.db.DbBggImageUtil;
 import com.etv.db.DbDevMedia;
-import com.etv.db.DbFontInfo;
 import com.etv.entity.BggImageEntity;
 import com.etv.entity.ControlMediaVoice;
-import com.etv.entity.FontEntity;
 import com.etv.entity.PowerOnOffEntity;
 import com.etv.entity.ScreenEntity;
 import com.etv.entity.TimedTaskListEntity;
@@ -76,44 +74,44 @@ public class TcpServerModuleImpl implements TcpServerModule {
 
         MyLog.cdl("====获取设备信息全部==" + requestUrl + "?userName=" + userName + "&clNo=" + clNo);
         OkHttpUtils
-                .post()
-                .url(requestUrl)
-                .addParams("clNo", clNo)
-                .addParams("userName", userName)
-                .build()
-                .execute(new StringCallback() {
+            .post()
+            .url(requestUrl)
+            .addParams("clNo", clNo)
+            .addParams("userName", userName)
+            .build()
+            .execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, String errorDesc, int id) {
-                        MyLog.cdl("====getSystemSettingAllInfo==errorDesc===" + errorDesc);
+                @Override
+                public void onError(Call call, String errorDesc, int id) {
+                    MyLog.cdl("====getSystemSettingAllInfo==errorDesc===" + errorDesc);
+                }
+
+                @Override
+                public void onResponse(String response, int id) {
+                    if (response == null || TextUtils.isEmpty(response)) {
+                        MyLog.cdl("===getSystemSettingAllInfo==response==null==");
+                        return;
                     }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        if (response == null || TextUtils.isEmpty(response)) {
-                            MyLog.cdl("===getSystemSettingAllInfo==response==null==");
+                    MyLog.cdl("===getSystemSettingAllInfo==response====" + response);
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        int code = jsonObject.getInt("code");
+                        String msg = jsonObject.getString("msg");
+                        if (code != 0) {
+                            MyLog.cdl("===getSystemSettingAllInfo==解析 Code!=0 ====" + msg);
                             return;
                         }
-                        MyLog.cdl("===getSystemSettingAllInfo==response====" + response);
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            int code = jsonObject.getInt("code");
-                            String msg = jsonObject.getString("msg");
-                            if (code != 0) {
-                                MyLog.cdl("===getSystemSettingAllInfo==解析 Code!=0 ====" + msg);
-                                return;
-                            }
-                            String data = jsonObject.getString("data");
-                            if (data == null || TextUtils.isEmpty(data)) {
-                                MyLog.cdl("===getSystemSettingAllInfo==data==null==");
-                                return;
-                            }
-                            parsenerDeviceAllData(data, listener);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        String data = jsonObject.getString("data");
+                        if (data == null || TextUtils.isEmpty(data)) {
+                            MyLog.cdl("===getSystemSettingAllInfo==data==null==");
+                            return;
                         }
+                        parsenerDeviceAllData(data, listener);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+                }
+            });
     }
 
     private void parsenerDeviceAllData(String data, SysSettingAllInfoListener listener) {
@@ -128,53 +126,53 @@ public class TcpServerModuleImpl implements TcpServerModule {
         // http://119.23.220.53:8899/etv/webservice/selectClientDiySet?clientNo=301F9A64C672D41243FE746A
         String clNO = CodeUtil.getUniquePsuedoID();
         OkHttpUtils
-                .post()
-                .url(requestUrl)
-                .addParams("clientNo", clNO)
-                .build()
-                .execute(new StringCallback() {
+            .post()
+            .url(requestUrl)
+            .addParams("clientNo", clNO)
+            .build()
+            .execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, String errorrDesc, int id) {
-                        MyLog.bgg("====获取背景errorrDesc==" + errorrDesc);
-                        backSuccessBggImageInfo(errorrDesc, taskServiceView);
-                    }
+                @Override
+                public void onError(Call call, String errorrDesc, int id) {
+                    MyLog.bgg("====获取背景errorrDesc==" + errorrDesc);
+                    backSuccessBggImageInfo(errorrDesc, taskServiceView);
+                }
 
-                    @Override
-                    public void onResponse(String json, int id) {
-                        MyLog.bgg("====获取背景success==" + json);
-                        try {
-                            if (json == null || json.length() < 5) {
-                                backSuccessBggImageInfo("JSON返回信息为null", taskServiceView);
-                                return;
-                            }
-                            JSONObject object = new JSONObject(json);
-                            int code = object.getInt("code");
-                            String desc = object.getString("msg");
-                            if (code != 0) {
-                                backSuccessBggImageInfo(desc, taskServiceView);
-                                return;
-                            }
-                            String data = object.getString("data");
-                            JSONObject jsonObjectData = new JSONObject(data);
-                            String clientDiyLst = jsonObjectData.getString("clientDiyLst");
-                            if (data.contains("clientLogoInfo")) {
-                                String clientLogoInfo = jsonObjectData.getString("clientLogoInfo");
-                                //解析设备 logo 信息
-                                parsenerClientLogoInfo(clientLogoInfo);
-                            }
-                            if (data.contains("clientVolLst")) {
-                                String clientVolLst = jsonObjectData.getString("clientVolLst");
-                                //解析定时音量
-                                parsenerMediaVoiceNum(clientVolLst);
-                            }
-                            //背景图保存到集合
-                            saveBggImageToList(clientDiyLst, taskServiceView);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                @Override
+                public void onResponse(String json, int id) {
+                    MyLog.bgg("====获取背景success==" + json);
+                    try {
+                        if (json == null || json.length() < 5) {
+                            backSuccessBggImageInfo("JSON返回信息为null", taskServiceView);
+                            return;
                         }
+                        JSONObject object = new JSONObject(json);
+                        int code = object.getInt("code");
+                        String desc = object.getString("msg");
+                        if (code != 0) {
+                            backSuccessBggImageInfo(desc, taskServiceView);
+                            return;
+                        }
+                        String data = object.getString("data");
+                        JSONObject jsonObjectData = new JSONObject(data);
+                        String clientDiyLst = jsonObjectData.getString("clientDiyLst");
+                        if (data.contains("clientLogoInfo")) {
+                            String clientLogoInfo = jsonObjectData.getString("clientLogoInfo");
+                            //解析设备 logo 信息
+                            parsenerClientLogoInfo(clientLogoInfo);
+                        }
+                        if (data.contains("clientVolLst")) {
+                            String clientVolLst = jsonObjectData.getString("clientVolLst");
+                            //解析定时音量
+                            parsenerMediaVoiceNum(clientVolLst);
+                        }
+                        //背景图保存到集合
+                        saveBggImageToList(clientDiyLst, taskServiceView);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+                }
+            });
     }
 
     /***
@@ -285,34 +283,34 @@ public class TcpServerModuleImpl implements TcpServerModule {
         String devId = CodeUtil.getUniquePsuedoID();
         String requestUrl = ApiInfo.POWERONOFF_QUERY() + "?clNo=" + devId;
         OkHttpUtils
-                .get()
-                .url(requestUrl)
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, String errorDesc, int id) {
-                        MyLog.netty(errorDesc);
-                        backListener(false, null, errorDesc, listener);
-                    }
+            .get()
+            .url(requestUrl)
+            .build()
+            .execute(new StringCallback() {
+                @Override
+                public void onError(Call call, String errorDesc, int id) {
+                    MyLog.netty(errorDesc);
+                    backListener(false, null, errorDesc, listener);
+                }
 
-                    @Override
-                    public void onResponse(String json, int id) {
-                        MyLog.powerOnOff("获取定时开关机信息：" + json, true);
-                        try {
-                            JSONObject jsonObject = new JSONObject(json);
-                            int code = jsonObject.getInt("code");
-                            String errorrDesc = jsonObject.getString("msg");
-                            if (code == 0) {
-                                String data = jsonObject.getString("data");
-                                parsenerTimerTask(data, listener);
-                            } else {
-                                backListener(false, null, errorrDesc, listener);
-                            }
-                        } catch (Exception e) {
-                            MyLog.powerOnOff("====定时开关机解析异常：" + e.toString(), true);
+                @Override
+                public void onResponse(String json, int id) {
+                    MyLog.powerOnOff("获取定时开关机信息：" + json, true);
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+                        int code = jsonObject.getInt("code");
+                        String errorrDesc = jsonObject.getString("msg");
+                        if (code == 0) {
+                            String data = jsonObject.getString("data");
+                            parsenerTimerTask(data, listener);
+                        } else {
+                            backListener(false, null, errorrDesc, listener);
                         }
+                    } catch (Exception e) {
+                        MyLog.powerOnOff("====定时开关机解析异常：" + e.toString(), true);
                     }
-                });
+                }
+            });
     }
 
     /**
@@ -367,47 +365,47 @@ public class TcpServerModuleImpl implements TcpServerModule {
     public void getSystemSettingInfoTCP() {
         String requestUrl = ApiInfo.getSdManagerCheckUrl();
         OkHttpUtils
-                .post()
-                .url(requestUrl)
-                .addParams("userName", SharedPerManager.getUserName())
-                .build()
-                .execute(new StringCallback() {
+            .post()
+            .url(requestUrl)
+            .addParams("userName", SharedPerManager.getUserName())
+            .build()
+            .execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, String errorDesc, int id) {
-                        MyLog.netty("===========getSystemSettingInfo============" + errorDesc);
-                    }
+                @Override
+                public void onError(Call call, String errorDesc, int id) {
+                    MyLog.netty("===========getSystemSettingInfo============" + errorDesc);
+                }
 
-                    @Override
-                    public void onResponse(String json, int id) {
-                        MyLog.netty("===========getSystemSettingInfo============" + json);
-                        try {
-                            JSONObject jsonObject = new JSONObject(json);
-                            int code = jsonObject.getInt("code");
-                            if (code == 0) {
-                                String data = jsonObject.getString("data");
-                                JSONObject jsonData = new JSONObject(data);
-                                int riLevel = Integer.parseInt(jsonData.getString("riLevel"));
-                                String riSpeedLimit = jsonData.getString("riSpeedLimit");  //下载速度
-                                String riDownNumLimit = jsonData.getString("riDownNumLimit"); //下载台数限制
-                                if (riDownNumLimit == null || riDownNumLimit.length() < 1) {
-                                    riDownNumLimit = "200";
-                                }
-                                if (riSpeedLimit == null || riSpeedLimit.length() < 1) {
-                                    riSpeedLimit = "5000";
-                                }
-                                int limitSpeed = Integer.parseInt(riSpeedLimit);
-                                int limitNumLine = Integer.parseInt(riDownNumLimit);
-                                SharedPerManager.setLimitDevNum(limitNumLine);
-                                SharedPerManager.setLimitSpeed(limitSpeed);
-                                SharedPerManager.setSdcardManagerAuthor(riLevel);
-//                               SharedPerManager.setSdcardCacheSize(riRam);
+                @Override
+                public void onResponse(String json, int id) {
+                    MyLog.netty("===========getSystemSettingInfo============" + json);
+                    try {
+                        JSONObject jsonObject = new JSONObject(json);
+                        int code = jsonObject.getInt("code");
+                        if (code == 0) {
+                            String data = jsonObject.getString("data");
+                            JSONObject jsonData = new JSONObject(data);
+                            int riLevel = Integer.parseInt(jsonData.getString("riLevel"));
+                            String riSpeedLimit = jsonData.getString("riSpeedLimit");  //下载速度
+                            String riDownNumLimit = jsonData.getString("riDownNumLimit"); //下载台数限制
+                            if (riDownNumLimit == null || riDownNumLimit.length() < 1) {
+                                riDownNumLimit = "200";
                             }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            if (riSpeedLimit == null || riSpeedLimit.length() < 1) {
+                                riSpeedLimit = "5000";
+                            }
+                            int limitSpeed = Integer.parseInt(riSpeedLimit);
+                            int limitNumLine = Integer.parseInt(riDownNumLimit);
+                            SharedPerManager.setLimitDevNum(limitNumLine);
+                            SharedPerManager.setLimitSpeed(limitSpeed);
+                            SharedPerManager.setSdcardManagerAuthor(riLevel);
+//                               SharedPerManager.setSdcardCacheSize(riRam);
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+                }
+            });
     }
 
     /***
@@ -457,7 +455,7 @@ public class TcpServerModuleImpl implements TcpServerModule {
     }
 
     private void registerDevToSocket(Context context, String userName, RegisterDevListener
-            listener) {
+        listener) {
         MySDCard sdcard = new MySDCard(context);
         String requestUrl = ApiInfo.REGISTER_WEB_TO_DEV();
         MyLog.netty("======设备注册调用===" + requestUrl);
@@ -477,56 +475,56 @@ public class TcpServerModuleImpl implements TcpServerModule {
         String clLineState = "1";  //在线状态
         String clAddress = SharedPerManager.getAllAddress();
         OkHttpUtils
-                .post()
-                .url(requestUrl)
-                .addHeader("Accept-Language", "zh")
-                .addParams("clNo", clNO)
-                .addParams("clName", clName)
-                .addParams("clMac", clMac)
-                .addParams("linkType", "3")
-                .addParams("clLatitude", clLatitude + "")
-                .addParams("clLongitude", clLongitude + "")
-                .addParams("clIp", clIp)
-                .addParams("clScreenNum", clScreenNum)
-                .addParams("clResolution", clResolution)
-                .addParams("userName", userName)
-                .addParams("clDisk", sizeLast + "M")
-                .addParams("clLineState", clLineState)
-                .addParams("clVersion", clVersion)
-                .addParams("clAddress", clAddress)
-                .build()
-                .execute(new StringCallback() {
+            .post()
+            .url(requestUrl)
+            .addHeader("Accept-Language", "zh")
+            .addParams("clNo", clNO)
+            .addParams("clName", clName)
+            .addParams("clMac", clMac)
+            .addParams("linkType", "3")
+            .addParams("clLatitude", clLatitude + "")
+            .addParams("clLongitude", clLongitude + "")
+            .addParams("clIp", clIp)
+            .addParams("clScreenNum", clScreenNum)
+            .addParams("clResolution", clResolution)
+            .addParams("userName", userName)
+            .addParams("clDisk", sizeLast + "M")
+            .addParams("clLineState", clLineState)
+            .addParams("clVersion", clVersion)
+            .addParams("clAddress", clAddress)
+            .build()
+            .execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, String errorrDesc, int id) {
-                        listener.registerDevState(false, errorrDesc, -1);
-                        MyLog.netty("====注册errorDesc==" + errorrDesc);
-                    }
+                @Override
+                public void onError(Call call, String errorrDesc, int id) {
+                    listener.registerDevState(false, errorrDesc, -1);
+                    MyLog.netty("====注册errorDesc==" + errorrDesc);
+                }
 
-                    @Override
-                    public void onResponse(String json, int id) {
-                        MyLog.netty("====注册success==" + json, true);
-                        try {
-                            if (json == null || json.length() < 5) {
-                                listener.registerDevState(false, "JSON==NULL", -1);
-                                MyLog.netty("====注册success====json=null", true);
-                                return;
-                            }
-                            JSONObject object = new JSONObject(json);
-                            int code = object.getInt("code");
-                            String msg = object.getString("msg");
-                            if (code == 0 || code == 2) {
-                                String data = object.optString("data");
-                                parsenerDataInfo(data);
-                                listener.registerDevState(true, "Success", 0);
-                            } else if (code == 1) {  //注册失败
-                                listener.registerDevState(false, msg, 2);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                @Override
+                public void onResponse(String json, int id) {
+                    MyLog.netty("====注册success==" + json, true);
+                    try {
+                        if (json == null || json.length() < 5) {
+                            listener.registerDevState(false, "JSON==NULL", -1);
+                            MyLog.netty("====注册success====json=null", true);
+                            return;
                         }
+                        JSONObject object = new JSONObject(json);
+                        int code = object.getInt("code");
+                        String msg = object.getString("msg");
+                        if (code == 0 || code == 2) {
+                            String data = object.optString("data");
+                            parsenerDataInfo(data);
+                            listener.registerDevState(true, "Success", 0);
+                        } else if (code == 1) {  //注册失败
+                            listener.registerDevState(false, msg, 2);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+                }
+            });
     }
 
     private void parsenerDataInfo(String data) {
@@ -575,7 +573,7 @@ public class TcpServerModuleImpl implements TcpServerModule {
     }
 
     private void registerDevToWebWebSocket(Context context, String
-            userName, RegisterDevListener listener) {
+        userName, RegisterDevListener listener) {
         MySDCard sdcard = new MySDCard(context);
         String requestUrl = ApiInfo.REGISTER_WEB_TO_DEV();
         String clNO = CodeUtil.getUniquePsuedoID();
@@ -595,52 +593,52 @@ public class TcpServerModuleImpl implements TcpServerModule {
         String clAddress = SharedPerManager.getAllAddress();
 
         OkHttpUtils
-                .post()
-                .url(requestUrl)
-                .addParams("clNo", clNO)
-                .addParams("clName", clName)
-                .addParams("clMac", clMac)
-                .addParams("clLatitude", clLatitude + "")
-                .addParams("clLongitude", clLongitude + "")
-                .addParams("clIp", clIp)
-                .addParams("clScreenNum", clScreenNum)
-                .addParams("clResolution", clResolution)
-                .addParams("userName", userName)
-                .addParams("clDisk", sizeLast + "M")
-                .addParams("clLineState", clLineState)
-                .addParams("clVersion", clVersion)
-                .addParams("clAddress", clAddress)
-                .build()
-                .execute(new StringCallback() {
+            .post()
+            .url(requestUrl)
+            .addParams("clNo", clNO)
+            .addParams("clName", clName)
+            .addParams("clMac", clMac)
+            .addParams("clLatitude", clLatitude + "")
+            .addParams("clLongitude", clLongitude + "")
+            .addParams("clIp", clIp)
+            .addParams("clScreenNum", clScreenNum)
+            .addParams("clResolution", clResolution)
+            .addParams("userName", userName)
+            .addParams("clDisk", sizeLast + "M")
+            .addParams("clLineState", clLineState)
+            .addParams("clVersion", clVersion)
+            .addParams("clAddress", clAddress)
+            .build()
+            .execute(new StringCallback() {
 
-                    @Override
-                    public void onError(Call call, String errorrDesc, int id) {
-                        listener.registerDevState(false, errorrDesc, -1);
-                        MyLog.netty("====注册errorDesc==" + errorrDesc);
-                    }
+                @Override
+                public void onError(Call call, String errorrDesc, int id) {
+                    listener.registerDevState(false, errorrDesc, -1);
+                    MyLog.netty("====注册errorDesc==" + errorrDesc);
+                }
 
-                    @Override
-                    public void onResponse(String json, int id) {
-                        MyLog.netty("====注册success==" + json, true);
-                        try {
-                            if (json == null || json.length() < 5) {
-                                listener.registerDevState(false, "JSON==NULL", -1);
-                                MyLog.netty("====注册success====json=null", true);
-                                return;
-                            }
-                            JSONObject object = new JSONObject(json);
-                            int code = object.getInt("code");
-                            String msg = object.getString("msg");
-                            if (code == 0 || code == 2) {
-                                listener.registerDevState(true, "Success", 0);
-                            } else if (code == 1) {  //注册失败
-                                listener.registerDevState(false, msg, 2);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                @Override
+                public void onResponse(String json, int id) {
+                    MyLog.netty("====注册success==" + json, true);
+                    try {
+                        if (json == null || json.length() < 5) {
+                            listener.registerDevState(false, "JSON==NULL", -1);
+                            MyLog.netty("====注册success====json=null", true);
+                            return;
                         }
+                        JSONObject object = new JSONObject(json);
+                        int code = object.getInt("code");
+                        String msg = object.getString("msg");
+                        if (code == 0 || code == 2) {
+                            listener.registerDevState(true, "Success", 0);
+                        } else if (code == 1) {  //注册失败
+                            listener.registerDevState(false, msg, 2);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                });
+                }
+            });
     }
 
     @Override
@@ -649,38 +647,38 @@ public class TcpServerModuleImpl implements TcpServerModule {
             String clNO = CodeUtil.getUniquePsuedoID();
             String request = ApiInfo.QUERY_DEV_INFO();
             OkHttpUtils
-                    .post()
-                    .url(request)
-                    .addParams("clNo", clNO)
-                    .addParams("linkType", "3")
-                    .build()
-                    .execute(new StringCallback() {
-                        @Override
-                        public void onError(Call call, String errorDesc, int id) {
-                            MyLog.netty("====获取设备信息error===" + errorDesc);
-                            listener.getDevHartInfoStatues(false, errorDesc);
-                        }
+                .post()
+                .url(request)
+                .addParams("clNo", clNO)
+                .addParams("linkType", "3")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, String errorDesc, int id) {
+                        MyLog.netty("====获取设备信息error===" + errorDesc);
+                        listener.getDevHartInfoStatues(false, errorDesc);
+                    }
 
-                        @Override
-                        public void onResponse(String json, int id) {
-                            MyLog.netty("====获取设备信息===" + json);
-                            if (json == null || json.length() < 5) {
-                                listener.getDevHartInfoStatues(false, "http json is null !");
+                    @Override
+                    public void onResponse(String json, int id) {
+                        MyLog.netty("====获取设备信息===" + json);
+                        if (json == null || json.length() < 5) {
+                            listener.getDevHartInfoStatues(false, "http json is null !");
+                            return;
+                        }
+                        try {
+                            JSONObject jsonObject = new JSONObject(json);
+                            int code = jsonObject.getInt("code");
+                            if (code != 0) {
+                                listener.getDevHartInfoStatues(false, "Device registration required");
                                 return;
                             }
-                            try {
-                                JSONObject jsonObject = new JSONObject(json);
-                                int code = jsonObject.getInt("code");
-                                if (code != 0) {
-                                    listener.getDevHartInfoStatues(false, "Device registration required");
-                                    return;
-                                }
-                                listener.getDevHartInfoStatues(true, "The device already exists");
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                            listener.getDevHartInfoStatues(true, "The device already exists");
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    });
+                    }
+                });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -700,87 +698,10 @@ public class TcpServerModuleImpl implements TcpServerModule {
         String requestUrl = ApiInfo.QUERY_DEV_INFO();
         MyLog.http("======查询设备信息=" + requestUrl);
         OkHttpUtils
-                .post()
-                .url(requestUrl)
-                .addParams("clNo", devId)
-                .addParams("linkType", "3")
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, String errorDesc, int id) {
-                    }
-
-                    @Override
-                    public void onResponse(String json, int id) {
-                        MyLog.cdl("获取的设备信息===updateDevInformation==" + json);
-                        try {
-                            JSONObject jsonObject = new JSONObject(json);
-                            int code = jsonObject.getInt("code");
-                            if (code != 0) {
-                                return;
-                            }
-                            String data = jsonObject.getString("data");
-                            JSONObject jsonObjectData = new JSONObject(data);
-                            //=====================================
-                            String nickName = jsonObjectData.getString("clName");
-                            SharedPerManager.setDevNickName(nickName);
-
-                            boolean infoFrom = SharedPerManager.getInfoFrom();
-                            if (!infoFrom) {
-                                MyLog.cdl("获取的设备信息===用户设置得本地设置，这里中断操作");
-                                return;
-                            }
-
-                            //设置退出密码
-                            if (data.contains("quitPwd")) {  //退出密码
-                                String exitPassword = jsonObjectData.getString("quitPwd");
-                                SharedPerManager.setExitpassword(exitPassword);
-                            }
-                            //守护进程得时间
-                            if (data.contains("daemonProcessTime")) {
-                                String daemonProcessTime = jsonObjectData.getString("daemonProcessTime");
-                                GuardianUtil.setGuardianProjectTime(context, daemonProcessTime);
-                            }
-                            String appId = SharedPerManager.getAuthorId();
-                            if (data.contains("appId")) {
-                                appId = jsonObjectData.getString("appId");
-                            }
-                            SharedPerManager.setAuthorId(appId);
-                            //双屏异显加载得方式
-                            if (data.contains("dualScreenAdapt")) {
-                                int dualScreenAdapt = jsonObjectData.getInt("dualScreenAdapt");
-                                SharedPerManager.setDoubleScreenMath(dualScreenAdapt);
-                            }
-                            if (data.contains("spStatisticsPlay")) {
-                                //播放统计  0关闭 1开启
-                                int spStatisticsPlay = jsonObjectData.getInt("spStatisticsPlay");
-                                SharedPerManager.setPlayTotalUpdate(spStatisticsPlay == 1 ? true : false);
-                            }
-                            if (data.contains("spStatisticsFlow")) {
-                                //统计流量  0关闭 1开启
-                                int spStatisticsFlow = jsonObjectData.getInt("spStatisticsFlow");
-                                SharedPerManager.setIfUpdateTraffToWeb(spStatisticsFlow == 1 ? true : false);
-                            }
-
-                            if (tag.contains("location")) {
-                                SharedPerManager.setAutoLocation(false);
-                            } else if (tag.contains("changeUsername")) {  //修改用户名字
-                                //这里需要重启设备了
-                                SystemManagerUtil.rebootApp(context);
-                            }
-                        } catch (Exception e) {
-                            MyLog.netty("====定时开关机解析异常000：" + e.toString());
-                        }
-                    }
-                });
-    }
-
-    @Override
-    public void getProjectFontInfoFromWeb(String id) {
-        String requestUrl = ApiInfo.getFontRequestInfo();
-        OkHttpUtils
-            .get()
+            .post()
             .url(requestUrl)
+            .addParams("clNo", devId)
+            .addParams("linkType", "3")
             .build()
             .execute(new StringCallback() {
                 @Override
@@ -789,9 +710,7 @@ public class TcpServerModuleImpl implements TcpServerModule {
 
                 @Override
                 public void onResponse(String json, int id) {
-                    if (json == null || json.length() < 5) {
-                        return;
-                    }
+                    MyLog.cdl("获取的设备信息===updateDevInformation==" + json);
                     try {
                         JSONObject jsonObject = new JSONObject(json);
                         int code = jsonObject.getInt("code");
@@ -799,13 +718,56 @@ public class TcpServerModuleImpl implements TcpServerModule {
                             return;
                         }
                         String data = jsonObject.getString("data");
-                        if (data == null || data.length() < 5) {
-                            //获取得数据==null
+                        JSONObject jsonObjectData = new JSONObject(data);
+                        //=====================================
+                        String nickName = jsonObjectData.getString("clName");
+                        SharedPerManager.setDevNickName(nickName);
+
+                        boolean infoFrom = SharedPerManager.getInfoFrom();
+                        if (!infoFrom) {
+                            MyLog.cdl("获取的设备信息===用户设置得本地设置，这里中断操作");
                             return;
                         }
-                        parsenerFontTextInfo(data);
+
+                        //设置退出密码
+                        if (data.contains("quitPwd")) {  //退出密码
+                            String exitPassword = jsonObjectData.getString("quitPwd");
+                            SharedPerManager.setExitpassword(exitPassword);
+                        }
+                        //守护进程得时间
+                        if (data.contains("daemonProcessTime")) {
+                            String daemonProcessTime = jsonObjectData.getString("daemonProcessTime");
+                            GuardianUtil.setGuardianProjectTime(context, daemonProcessTime);
+                        }
+                        String appId = SharedPerManager.getAuthorId();
+                        if (data.contains("appId")) {
+                            appId = jsonObjectData.getString("appId");
+                        }
+                        SharedPerManager.setAuthorId(appId);
+                        //双屏异显加载得方式
+                        if (data.contains("dualScreenAdapt")) {
+                            int dualScreenAdapt = jsonObjectData.getInt("dualScreenAdapt");
+                            SharedPerManager.setDoubleScreenMath(dualScreenAdapt);
+                        }
+                        if (data.contains("spStatisticsPlay")) {
+                            //播放统计  0关闭 1开启
+                            int spStatisticsPlay = jsonObjectData.getInt("spStatisticsPlay");
+                            SharedPerManager.setPlayTotalUpdate(spStatisticsPlay == 1 ? true : false);
+                        }
+                        if (data.contains("spStatisticsFlow")) {
+                            //统计流量  0关闭 1开启
+                            int spStatisticsFlow = jsonObjectData.getInt("spStatisticsFlow");
+                            SharedPerManager.setIfUpdateTraffToWeb(spStatisticsFlow == 1 ? true : false);
+                        }
+
+                        if (tag.contains("location")) {
+                            SharedPerManager.setAutoLocation(false);
+                        } else if (tag.contains("changeUsername")) {  //修改用户名字
+                            //这里需要重启设备了
+                            SystemManagerUtil.rebootApp(context);
+                        }
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        MyLog.netty("====定时开关机解析异常000：" + e.toString());
                     }
                 }
             });
@@ -813,7 +775,7 @@ public class TcpServerModuleImpl implements TcpServerModule {
 
 
     private void backListener(boolean isSuccess, Object object, String
-            errorrDesc, TaskChangeListener listener) {
+        errorrDesc, TaskChangeListener listener) {
         if (listener == null) {
             return;
         }
@@ -977,43 +939,5 @@ public class TcpServerModuleImpl implements TcpServerModule {
         });
         runnable.setImagePosition(displayPosition);
         EtvService.getInstance().executor(runnable);
-    }
-
-    /***
-     * 解析字体库
-     * @param data
-     */
-    private void parsenerFontTextInfo(String data) {
-        MyLog.db("========字体信息保存状态==json=" + data);
-        try {
-            JSONArray jsonArray = new JSONArray(data);
-            int num = jsonArray.length();
-            if (num < 1) {
-                return;
-            }
-            List<FontEntity> localFontSize = DbFontInfo.getFontInfoList();
-            if (localFontSize != null && localFontSize.size() > 0) {
-                if (localFontSize.size() == num) {
-                    MyLog.db("====数据是一样得，不用重复添加=====");
-                    return;
-                }
-            }
-            DbFontInfo.clearAllData();
-            for (int i = 0; i < num; i++) {
-                JSONObject jsonDate = jsonArray.getJSONObject(i);
-                int fontId = jsonDate.getInt("id");
-                String fontName = jsonDate.getString("fontName");
-                long fontSize = jsonDate.getLong("fontSize");
-                String downUrl = jsonDate.getString("downUrl");
-                String createTime = jsonDate.getString("createTime");
-                String downName = jsonDate.getString("downName");
-                FontEntity fontEntity = new FontEntity(fontId, fontName, fontSize, downUrl, downName, createTime);
-                boolean isSave = DbFontInfo.saveFontInfoToLocal(fontEntity);
-                MyLog.db("========字体信息保存状态===" + isSave + "  /" + fontEntity.toString());
-            }
-        } catch (Exception e) {
-            MyLog.db("========字体信息保存状态error===" + e.toString());
-            e.printStackTrace();
-        }
     }
 }

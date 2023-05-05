@@ -52,19 +52,6 @@ android {
             }
     }
 
-
-//    repositories {
-//        flatDir {
-//            dirs 'libs'
-//        }
-//    }
-
-//    sourceSets {
-//        main {
-//            jniLibs.srcDirs = ['libs']
-//        }
-//    }
-
     externalNativeBuild {
         ndkBuild {
             path 'src/main/jni/Android.mk'

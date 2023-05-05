@@ -39,9 +39,6 @@ public class AppInfo {
     public static final String VOICE_MEDIA = "etv-welcome.mp3";
     public static final String WELCOME_SAVE_PATH = BASE_PATH_INNER + "/Android/welcome.mp3";
 
-    //客户定制 type类型
-    public static final int MESSAGE_TYPE_CUSTOM_MADE = 6666;
-
     //是否可以检测定时任务
     public static boolean startCheckTaskTag = false;
     //服务器发给设备的操控指令类型

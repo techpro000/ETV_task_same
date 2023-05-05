@@ -1,11 +1,7 @@
 package com.etv.config;
 
 import com.etv.util.CodeUtil;
-import com.etv.util.MyLog;
-import com.etv.util.SharedPerManager;
 import com.etv.util.SharedPerUtil;
-import com.etv.util.TextUtils;
-import com.etv.util.aes.AESTool;
 
 public class ApiInfo {
 

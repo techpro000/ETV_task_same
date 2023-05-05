@@ -91,7 +91,6 @@ public class TcpService extends Service implements SocketWebListener {
                     MyLog.sleep("=======当前时间=235 设备准时重启软件=", true);
                     SystemManagerInstance.getInstance(TcpService.this).rebootDev();
                 }
-                startLocationService(1);
                 int numPlus = new Random().nextInt(3000);
                 handler.sendEmptyMessageDelayed(TIMER_ON_NOW_CHECK_SDCARD, 2000 + numPlus); //延迟5秒，因为TaskService中有准时刷新任务
             } else if (action.equals(AppInfo.SEND_IMAGE_CAPTURE_SUCCESS)) {  //收到截图通知
@@ -730,7 +729,7 @@ public class TcpService extends Service implements SocketWebListener {
                 if (!isSuccess) {
                     AppInfo.isDevRegister = false;
                     sendBroadToUi(AppInfo.SOCKET_LINE_STATUS_CHANGE, SocketWebListener.SOCKET_ERROR,
-                            "Registration Failed: " + errorrDesc, errorrDesc);
+                        "Registration Failed: " + errorrDesc, errorrDesc);
                     return;
                 }
                 AppInfo.isDevRegister = true;
@@ -859,7 +858,7 @@ public class TcpService extends Service implements SocketWebListener {
     public void socketState(int state, String desc) {
         MyLog.message("服务器Socket状态：" + state + "：  " + desc, true);
         if (state == SocketWebListener.SOCKET_CLOSE
-                || state == SocketWebListener.SOCKET_ERROR) {
+            || state == SocketWebListener.SOCKET_ERROR) {
             //socket断开了，去通知主界面更新状态
             AppConfig.isOnline = false;
         } else if (state == SocketWebListener.SOCKET_OPEN) {
@@ -894,10 +893,6 @@ public class TcpService extends Service implements SocketWebListener {
         }
     }
 
-    //================百度地图定位==============================================================================================
-    public void startLocationService(int tag) {
-//        MapLocationParsener.getInstance(TcpService.this).startLocationService(tag);
-    }
 
     private void initReceiver() {
         IntentFilter filter = new IntentFilter();

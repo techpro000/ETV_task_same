@@ -100,12 +100,6 @@ public class SystemManagerInstance {
             if (progress < 1) {
                 progress = 1;
             }
-            if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-                Intent intent1 = new Intent("com.ys.set_screen_bright").setPackage("com.ys.ys_receiver");
-                intent1.putExtra("brightValue", progress);
-                context.sendBroadcast(intent1);
-                return;
-            }
             myManager.changeScreenLight(progress);
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,12 +112,6 @@ public class SystemManagerInstance {
     private void turnOnBacklight() {
         try {
             MyLog.sleep("===========00000执行唤醒程序");
-            if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-                Intent intent = new Intent("com.ys.set_screen_on").setPackage("com.ys.ys_receiver");
-                intent.putExtra("screen_on", 1);
-                context.sendBroadcast(intent);
-                return;
-            }
             if (CpuModel.getMobileType().startsWith("rk3399")) {
                 String lightNum = SharedPerManager.getScreenLightNum();
                 MyLog.sleep("===========开启背光===" + lightNum);
@@ -149,12 +137,6 @@ public class SystemManagerInstance {
     private void turnOffBacklight() {
         try {
             MyLog.sleep("===========00000执行休眠程序===");
-            if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-                Intent intent = new Intent("com.ys.set_screen_on").setPackage("com.ys.ys_receiver");
-                intent.putExtra("screen_on", 0);
-                context.sendBroadcast(intent);
-                return;
-            }
             if (CpuModel.getMobileType().startsWith("rk3399")) {
                 String rootCmdLight = "cat sys/class/backlight/backlight/bl_power";
                 String lightLightNum = RootCmd.execRootCmdBackInfo(rootCmdLight);

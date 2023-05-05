@@ -55,7 +55,7 @@ import java.util.List;
  * log标签 ：cdl
  */
 public class MainActivity extends TaskActivity implements
-        View.OnClickListener, MainView {
+    View.OnClickListener, MainView {
 
     MainParsener mainParsener;
     public static boolean IS_ORDER_REQUEST_TASK = false; //根据这个参数去请求任务
@@ -227,11 +227,6 @@ public class MainActivity extends TaskActivity implements
             GuardianUtil.setGuardianProjectTime(MainActivity.this, "120");
         }
         isMainForst = true;
-        if (SharedPerUtil.SOCKEY_TYPE() == AppConfig.SOCKEY_TYPE_WEBSOCKET) {
-            TcpService.getInstance().startLocationService(1);
-        } else {
-            TcpSocketService.getInstance().startLocationService(1);
-        }
         if (Biantai.isMainOnResume()) {
             return;
         }

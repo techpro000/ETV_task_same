@@ -65,9 +65,6 @@ public class ScreenUtil {
     }
 
     public static String getresolution() {
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            return getM11Resolution();
-        }
         StringBuilder screenNumSize = new StringBuilder();
         List<ScreenEntity> screenEntityList = EtvApplication.getInstance().getListScreen();
         if (screenEntityList != null && screenEntityList.size() > 0) {
@@ -85,22 +82,5 @@ public class ScreenUtil {
         return screenNumSize.toString();
     }
 
-    /***
-     * 获取M11-分辨率
-     * @return
-     */
-    private static String getM11Resolution() {
-        int screenWidth = SharedPerManager.getScreenWidth();
-        int screenHeight = SharedPerManager.getScreenHeight();
-        if (screenWidth == 1280 && screenHeight == 720) {
-            screenWidth = 1920;
-            screenHeight = 1080;
-        }
-        if (screenWidth == 720 && screenHeight == 1280) {
-            screenWidth = 1080;
-            screenHeight = 1920;
-        }
-        return screenWidth + "x" + screenHeight;
-    }
 
 }

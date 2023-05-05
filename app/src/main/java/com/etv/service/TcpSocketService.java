@@ -113,7 +113,6 @@ public class TcpSocketService extends Service {
     private static final int CHANGE_DEVICE_TO_OTHER = 5666;  //修改设备归属
     //    private static final int CHANGE_BGG_UPDATE_VIEW = 5667;  //修改背景，延时去通知界面
     private static final int SOCKET_LINE_SUCCESS_UPDATE_TASK_INFO = 5668;  //服务器连接成功,同步任务信息
-    private static final int MESSAGE_TTS_SPESK = 5669;  //语音TTS
     private static final int MESSAGE_GET_ALL_DEV_SET_INFO = 5670;  //统一获取所有得设备设置接口
 
     private Handler handler = new Handler() {
@@ -130,11 +129,6 @@ public class TcpSocketService extends Service {
                     //获取所有得设备信息
                     getSytemDevSettingAllInfo();
                     break;
-                case MESSAGE_TTS_SPESK: //语音TTS
-                    String tts = (String) msg.obj;
-                    MyLog.netty("====语音TTS===" + tts);
-                    startToSpeak(tts);
-                    break;
                 case SEND_BROAD_TO_VIEW:  //发广播给界面
                     AppStatuesListener.getInstance().objectLiveDate.postValue(AppStatuesListener.LIVE_DATA_POWERONOFF);
 
@@ -146,7 +140,6 @@ public class TcpSocketService extends Service {
                 case CHECK_BGG_IMAGE_STATUES://背景图检测下载相关得
                     //获取字体信息
                     initOther();
-                    tcpParsener.getProjectFontInfoFromWeb("TcpSocketService 检测背景图 CHECK_BGG_IMAGE_STATUES");
                     //检查背景图信息
                     checkBggImageStatues();
                     break;
@@ -360,7 +353,7 @@ public class TcpSocketService extends Service {
                 AppInfo.isDevRegister = isSuccess;
                 if (!isSuccess) {
                     sendBroadToUi(AppInfo.SOCKET_LINE_STATUS_CHANGE, SocketWebListener.SOCKET_ERROR,
-                            "Registration Failed: " + errorrDesc, errorrDesc);
+                        "Registration Failed: " + errorrDesc, errorrDesc);
                     return;
                 }
                 sendBroadToUi(AppInfo.SOCKET_LINE_STATUS_CHANGE, SocketWebListener.SOCKET_ERROR, "Registration successful, Ready to connect", null);
@@ -559,13 +552,6 @@ public class TcpSocketService extends Service {
             } else if (type == AppInfo.MESSAGE_TYPE_WINCHAT_SOFT) { //小程序指令
                 int code = jsonObject.getInt("code");
                 KeyControl.sendCodeToDev(TcpSocketService.this, code);
-            } else if (type == AppInfo.MESSAGE_TYPE_CUSTOM_MADE) {
-                //  客户定制--方案
-                int code = jsonObject.getInt("code");
-                if (code == AppInfo.ORDER_TTS_MESSAGE) {
-                    String messageTTS = jsonObject.getString("data");
-                    handler.obtainMessage(MESSAGE_TTS_SPESK, messageTTS).sendToTarget();
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -583,7 +569,7 @@ public class TcpSocketService extends Service {
             int code = jsonObject.getInt("code");
             switch (code) {
                 case AppInfo.WET_SCAN_REGISTER_DEV_WEB:
-                    Log.e(TAG, "dealSysCodeMessage: "+"走这" );
+                    Log.e(TAG, "dealSysCodeMessage: " + "走这");
                     String userName = jsonObject.getString("userName");
                     SharedPerManager.setUserName(userName, "微信扫码连接服务器");
                     dealDisOnlineDev("微信扫码连接服务器", false);
@@ -823,7 +809,6 @@ public class TcpSocketService extends Service {
                         MyLog.sleep("=======当前时间=235 设备准时重启软件=", true);
                         SystemManagerInstance.getInstance(TcpSocketService.this).rebootDev();
                     }
-                    startLocationService(1);
                     int numPlus = new Random().nextInt(3000);
                     handler.sendEmptyMessageDelayed(TIMER_ON_NOW_CHECK_SDCARD, 2000 + numPlus); //延迟5秒，因为TaskService中有准时刷新任务
                 } else if (action.equals(AppInfo.SEND_IMAGE_CAPTURE_SUCCESS)) {  //收到截图通知
@@ -886,21 +871,6 @@ public class TcpSocketService extends Service {
     public void registerDev(Context context, String userName, RegisterDevListener listener) {
         initOther();
         tcpParsener.registerDev(context, userName, listener);
-    }
-
-    public void startToSpeak(String s) {
-        initOther();
-        tcpParsener.startToSpeak(s);
-    }
-
-    public void stopToSpeakMessage() {
-        initOther();
-        tcpParsener.stopToSpeakMessage();
-    }
-
-    //=============百度地图定位==============
-    public void startLocationService(int tag) {
-//        MapLocationParsener.getInstance(TcpSocketService.this).startLocationService(tag);
     }
 
     private void updateImageToWeb(Intent intent) {

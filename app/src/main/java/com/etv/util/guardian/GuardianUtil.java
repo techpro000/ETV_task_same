@@ -209,10 +209,6 @@ public class GuardianUtil {
     }
 
     public void startInstallGuardian() {
-        if (CpuModel.getMobileType().startsWith(CpuModel.CPU_MODEL_MTK_M11)) {
-            MyLog.guardian("MTK 不安装守护进程");
-            return;
-        }
         boolean isApkInstall = APKUtil.ApkState(context, AppInfo.GUARDIAN_PACKAGE_NAME);
         MyLog.guardian("守护进程是否安装: " + isApkInstall);
         RawSourceEntity rawSourceEntity = getResourceGuardianEntity();
@@ -275,49 +271,14 @@ public class GuardianUtil {
     }
 
     private RawSourceEntity getResourceGuardianEntity() {
-        RawSourceEntity rawSourceEntity = null;
-        try {
-            List<RawSourceEntity> lists = new ArrayList<RawSourceEntity>();
-            lists.add(new RawSourceEntity(R.raw.guardian_71, 3363309, "7.0通用版本", 67));         // 7.1 系统通用       2
-            lists.add(new RawSourceEntity(R.raw.guardian_81, 3389505, "8.1通用版本", 48));         //8.1 PX30 系统通用         6
-            lists.add(new RawSourceEntity(R.raw.guardian_91, 3383918, "9.0", 54));               //a88 9.0版本             7
-            String cpuModel = CpuModel.getMobileType();
-            MyLog.guardian("=====获取守护进程Raw id error==" + cpuModel);
-            if (cpuModel.contains(CpuModel.CPU_MODEL_MLOGIC)) {
-                rawSourceEntity = lists.get(8);
-            } else if (cpuModel.contains(CpuModel.CPU_MODEL_SMD) || cpuModel.contains(CpuModel.CPU_MODEL_MSM)) {
-                rawSourceEntity = lists.get(3);
-            } else if (cpuModel.contains(CpuModel.CPU_MODEL_AOSP)) {
-                rawSourceEntity = lists.get(4);
-            } else if (cpuModel.contains(CpuModel.CPU_MODEL_WING)) {
-                rawSourceEntity = lists.get(5);
-            } else if (cpuModel.contains(CpuModel.CPU_MODEL_PX30)) {
-                rawSourceEntity = lists.get(6);
-            } else if (cpuModel.contains(CpuModel.CPU_MODEL_RK_DEFAULT)) {
-                int sdkCode = Build.VERSION.SDK_INT;
-                MyLog.guardian("==当前SDK 得版本===" + sdkCode);
-                if (sdkCode > Build.VERSION_CODES.Q) {
-                    // 11.0
-                    rawSourceEntity = lists.get(9);
-                } else if (sdkCode > Build.VERSION_CODES.O) {
-                    // 8.0
-                    rawSourceEntity = lists.get(6);
-                } else if (sdkCode > Build.VERSION_CODES.N && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                    // 7.0系统需要系统签名
-                    rawSourceEntity = lists.get(2);
-                } else if (sdkCode > Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                    // 5<Code<6.0  //需要系统签名
-                    rawSourceEntity = lists.get(1);
-                } else if (sdkCode > Build.VERSION_CODES.JELLY_BEAN && sdkCode < Build.VERSION_CODES.LOLLIPOP) {
-                    //4.0~5.0
-                    rawSourceEntity = lists.get(0);
-                }
-            }
-        } catch (Exception e) {
-            MyLog.guardian("=====获取守护进程Raw id error==" + e.toString());
-            e.printStackTrace();
+        String cpuModel = CpuModel.getMobileType();
+        if (cpuModel.equals(CpuModel.CPU_MODEL_RK_3288)) {
+            return new RawSourceEntity(R.raw.guardian_71, 3363309, "7.0通用版本", 67);
+        } else if (cpuModel.contains(CpuModel.CPU_MODEL_3568_11)) {
+            //rk-3568 android 11
+            return new RawSourceEntity(R.raw.guardian_3568, 3394812, "3568-android-3568", 76);
         }
-        return rawSourceEntity;
+        return null;
     }
 
 
@@ -343,7 +304,8 @@ public class GuardianUtil {
     /***
      * 截图代码
      */
-    public static void getCaptureImage(Context context, int screenWidth, int screenHeight, String tag) {
+    public static void getCaptureImage(Context context, int screenWidth,
+                                       int screenHeight, String tag) {
         try {
             Intent intent = new Intent();
             intent.putExtra("screenWidth", screenWidth);
