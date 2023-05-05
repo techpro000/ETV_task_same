@@ -8,6 +8,7 @@ public class CpuModel {
 
     public static final String CPU_MODEL_PX30 = "px30";      //RK_PX30_8.1
     public static final String CPU_MODEL_RK_3288 = "rk3288";  //RK_3288
+    public static final String CPU_RK_3566 = "rk3566";        //RK-3566
     public static final String CPU_MODEL_3568_11 = "rk3568";  //3568-android-11
     /***
      * 获取CPU型号

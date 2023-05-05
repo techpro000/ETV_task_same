@@ -274,9 +274,10 @@ public class GuardianUtil {
         String cpuModel = CpuModel.getMobileType();
         if (cpuModel.equals(CpuModel.CPU_MODEL_RK_3288)) {
             return new RawSourceEntity(R.raw.guardian_71, 3363309, "7.0通用版本", 67);
-        } else if (cpuModel.contains(CpuModel.CPU_MODEL_3568_11)) {
-            //rk-3568 android 11
-            return new RawSourceEntity(R.raw.guardian_3568, 3394812, "3568-android-3568", 76);
+        }
+        if (cpuModel.contains(CpuModel.CPU_MODEL_3568_11)
+            || cpuModel.contains(CpuModel.CPU_RK_3566)) {
+            return new RawSourceEntity(R.raw.guardian_356x, 3206512, "3566-RK-11", 82);
         }
         return null;
     }
