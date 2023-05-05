@@ -8,8 +8,8 @@ android {
         applicationId "com.ys.etv"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 13
-        versionName "V5.3.1.4"
+        versionCode 14
+        versionName "V5.3.1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
@@ -19,12 +19,12 @@ android {
     }
 
     signingConfigs {
-//        debug {
-//            storeFile file('../yisheng.jks')
-//            storePassword 'yisheng888'
-//            keyAlias 'yisheng'
-//            keyPassword 'yisheng888'
-//        }
+        debug {
+            storeFile file('../yisheng.jks')
+            storePassword 'yisheng888'
+            keyAlias 'yisheng'
+            keyPassword 'yisheng888'
+        }
         release {
             storeFile file('../yisheng.jks')
             storePassword 'yisheng888'

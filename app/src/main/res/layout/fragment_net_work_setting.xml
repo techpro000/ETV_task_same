@@ -68,14 +68,6 @@
                 app:txt_content_switch=""
                 app:txt_title_switch="@string/play_total_update" />
 
-            <com.ys.model.view.SettingSwitchView
-                android:id="@+id/switch_traffic_update"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:img_left_switch="@mipmap/ter_net"
-                app:txt_content_switch=""
-                app:txt_title_switch="@string/net_total_add" />
-
         </LinearLayout>
     </ScrollView>
 

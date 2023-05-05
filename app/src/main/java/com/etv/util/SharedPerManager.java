@@ -827,42 +827,6 @@ public class SharedPerManager {
         EtvApplication.getInstance().saveData("packageName", packageName);
     }
 
-    //获取上一次统计的流量
-    public static long getLastDownTraff() {
-        return ((long) EtvApplication.getInstance().getData("lastDownTraff", 0L));
-    }
-
-    //记录上一次统计的流量
-    public static void setLastDownTraff(long lastDownTraff) {
-        EtvApplication.getInstance().saveData("lastDownTraff", lastDownTraff);
-    }
-
-    public static long getLastUploadTraff() {
-        return ((long) EtvApplication.getInstance().getData("lastUploadTraff", 0L));
-    }
-
-    //记录上一次统计的流量
-    public static void setLastUploadTraff(long lastUploadTraff) {
-        EtvApplication.getInstance().saveData("lastUploadTraff", lastUploadTraff);
-    }
-
-    /***
-     * 是否上传流量给服务器
-     * @return
-     */
-    public static boolean getIfUpdateTraffToWeb() {
-        return ((boolean) EtvApplication.getInstance().getData("ifUpdateTraffToWeb", false));
-    }
-
-    /***
-     * 设置是否上传流量到服务器
-     * @param ifUpdateTraffToWeb
-     */
-    public static void setIfUpdateTraffToWeb(boolean ifUpdateTraffToWeb) {
-        EtvApplication.getInstance().saveData("ifUpdateTraffToWeb", ifUpdateTraffToWeb);
-    }
-
-
     /**
      * 获取缓存的守护进程的状态
      *

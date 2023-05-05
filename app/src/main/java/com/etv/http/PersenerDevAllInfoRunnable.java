@@ -132,11 +132,6 @@ public class PersenerDevAllInfoRunnable implements Runnable {
                 int spStatisticsPlay = jsonObjectData.getInt("spStatisticsPlay");
                 SharedPerManager.setPlayTotalUpdate(spStatisticsPlay == 1 ? true : false);
             }
-            if (systemSet.contains("spStatisticsFlow")) {
-                //统计流量  0关闭 1开启
-                int spStatisticsFlow = jsonObjectData.getInt("spStatisticsFlow");
-                SharedPerManager.setIfUpdateTraffToWeb(spStatisticsFlow == 1 ? true : false);
-            }
         } catch (Exception e) {
             logInfo("====解析设备===设置信息==解析异常000：" + e.toString());
         }
@@ -357,7 +352,7 @@ public class PersenerDevAllInfoRunnable implements Runnable {
             SharedPerManager.setSdcardManagerAuthor(riLevel);
             logInfo("====解析设备==下载限速=" + riSpeedLimit + " / 清理等级==" + riLevel + " /同时下载台数： " + riDownNumLimit);
         } catch (
-                Exception e) {
+            Exception e) {
             e.printStackTrace();
         }
     }

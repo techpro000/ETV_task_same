@@ -136,12 +136,6 @@ public class EtvServerModuleImpl implements EtvServerModule {
                                 int spStatisticsPlay = jsonObjectData.getInt("spStatisticsPlay");
                                 SharedPerManager.setPlayTotalUpdate(spStatisticsPlay == 1 ? true : false);
                             }
-                            if (data.contains("spStatisticsFlow")) {
-                                //统计流量  0关闭 1开启
-                                int spStatisticsFlow = jsonObjectData.getInt("spStatisticsFlow");
-                                SharedPerManager.setIfUpdateTraffToWeb(spStatisticsFlow == 1 ? true : false);
-                            }
-
                             taskServiceView.getDevInfoFromWeb(true, "Request Success");
                         } catch (Exception e) {
                             MyLog.http("====queryDeviceInfoFromWeb==解析异常000：" + e.toString());

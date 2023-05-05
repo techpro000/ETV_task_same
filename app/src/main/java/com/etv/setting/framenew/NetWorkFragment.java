@@ -7,10 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
-import com.etv.service.TcpService;
-import com.etv.service.TcpSocketService;
 import com.etv.setting.TaskInfoActivity;
 import com.etv.setting.parsener.TerminallParsener;
 import com.etv.setting.view.TerminallView;
@@ -79,14 +76,6 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
             }
         });
 
-        mBinding.switchTrafficUpdate.setOnMoretListener(new MoreButtonToggleListener() {
-            @Override
-            public void switchToggleView(View view, boolean isChooice) {
-                MyToastView.getInstance().Toast(getActivity(), getLanguageFromResurce(R.string.net_update_chooice));
-                updateView();
-            }
-        });
-
         String code = CodeUtil.getEthMAC();
         MyLog.e("cdl", "======Mac = " + code);
         oridinryDialog = new OridinryDialog(getActivity());
@@ -117,8 +106,8 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
         String ipAddredd = SharedPerUtil.getSocketIpAddress() + ":" + SharedPerUtil.getSocketPort();
         String sourceDoanPath = SharedPerUtil.getSocketDownPath();
         String devInfo = "NickName: " + nickName + "\n" +
-                "IpAddredd: " + ipAddredd + "\n" +
-                "SoucePath: " + sourceDoanPath;
+            "IpAddredd: " + ipAddredd + "\n" +
+            "SoucePath: " + sourceDoanPath;
         oridinryDialog.show(getString(R.string.dev_info), devInfo);
     }
 
@@ -212,8 +201,6 @@ public class NetWorkFragment extends MessageFragment implements TerminallView, M
     }
 
     private void updateView() {
-        mBinding.switchTrafficUpdate.setSwitchStatues(SharedPerManager.getIfUpdateTraffToWeb());
-        mBinding.switchTrafficUpdate.setTxtContent(SharedPerManager.getIfUpdateTraffToWeb() ? getString(R.string.open) : getString(R.string.close));
         mBinding.switchPlayUpdate.setSwitchStatues(SharedPerManager.getPlayTotalUpdate());
         mBinding.switchPlayUpdate.setTxtContent(SharedPerManager.getPlayTotalUpdate() ? getString(R.string.open) : getString(R.string.close));
         mBinding.btnMidifyLocation.setTxtContent(SharedPerManager.getAllAddress());

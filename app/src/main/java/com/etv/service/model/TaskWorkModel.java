@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface TaskWorkModel {
 
-    void checkTrafficstatistics(Context context);
-
     void startToCheckBggImage(Context context);
 
 }

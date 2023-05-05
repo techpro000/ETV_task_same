@@ -754,12 +754,6 @@ public class TcpServerModuleImpl implements TcpServerModule {
                             int spStatisticsPlay = jsonObjectData.getInt("spStatisticsPlay");
                             SharedPerManager.setPlayTotalUpdate(spStatisticsPlay == 1 ? true : false);
                         }
-                        if (data.contains("spStatisticsFlow")) {
-                            //统计流量  0关闭 1开启
-                            int spStatisticsFlow = jsonObjectData.getInt("spStatisticsFlow");
-                            SharedPerManager.setIfUpdateTraffToWeb(spStatisticsFlow == 1 ? true : false);
-                        }
-
                         if (tag.contains("location")) {
                             SharedPerManager.setAutoLocation(false);
                         } else if (tag.contains("changeUsername")) {  //修改用户名字

@@ -124,10 +124,6 @@ public class TaskWorkService extends Service implements TaskView {
                 String tag = intent.getStringExtra(GET_TASK_FROM_WEB_TAG);
                 MyLog.task("========准备请求任务信息===" + tag);
                 requestTaskInfo("BroadcastReceiver");
-            } else if (action.equals(GET_TASK_FROM_WEB_NO_DOWN)) {
-                //服务器连接成功，同步服务器任务信息
-                // 从服务器同步任务信息,但是不下载
-                requestTaskInfoNoDown("BroadcastReceiver");
             } else if (action.equals(UPDATE_APK_IMG_INFO)) {
                 //升级软件APK
                 stopDownApkImg();
@@ -136,7 +132,6 @@ public class TaskWorkService extends Service implements TaskView {
                 stopDownApkImg();
             } else if (action.equals(Intent.ACTION_TIME_TICK)) {
                 MyLog.timer("=====TaskService==时间变化,去检测任务");
-                checkTrafficstatistics();
                 checkTaskOnTimeEver();
             } else if (action.equals(AppInfo.STOP_DOWN_TASK_RECEIVER)) {
                 //停止下载任务
@@ -904,17 +899,7 @@ public class TaskWorkService extends Service implements TaskView {
         }
     }
 
-
     TaskServiceParsener taskServiceParsener;
-
-    /**
-     * 流量统计
-     */
-    private void checkTrafficstatistics() {
-        initOther();
-        taskServiceParsener.checkTrafficstatistics();
-    }
-
 
     @Override
     public void onDestroy() {

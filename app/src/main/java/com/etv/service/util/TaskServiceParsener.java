@@ -20,22 +20,6 @@ public class TaskServiceParsener {
         taskWorkModel = new TaskWorkModelmpl();
     }
 
-
-    /***
-     * 检测流量统计得
-     */
-    public void checkTrafficstatistics() {
-        if (context == null) {
-            return;
-        }
-        boolean isUpdateTraff = SharedPerManager.getIfUpdateTraffToWeb();
-        if (!isUpdateTraff) {
-            MyLog.e("traff", "====流量上传拦截===开关没有打开=");
-            return;
-        }
-        taskWorkModel.checkTrafficstatistics(context);
-    }
-
     public void startToCheckBggImage() {
         if (context == null) {
             return;

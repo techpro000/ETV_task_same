@@ -64,9 +64,9 @@ public class EtvApplication extends Application {
     private void initOkHttp() {
         HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(10000L, TimeUnit.MILLISECONDS)
-                .readTimeout(10000L, TimeUnit.MILLISECONDS)
-                .build();
+            .connectTimeout(10000L, TimeUnit.MILLISECONDS)
+            .readTimeout(10000L, TimeUnit.MILLISECONDS)
+            .build();
         OkHttpUtils.initClient(okHttpClient);
     }
 

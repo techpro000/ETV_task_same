@@ -15,7 +15,6 @@
         <mapping class="com.etv.setting.db.TimeLocalEntity" />
         <mapping class="com.etv.entity.StatisticsEntity" />
         <mapping class="com.etv.entity.BggImageEntity" />
-        <mapping class="com.etv.util.net.AppTrafficModel" />
         <mapping class="com.etv.entity.ControlMediaVoice" />
     </list>
 
