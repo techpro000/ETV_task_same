@@ -8,8 +8,8 @@ android {
         applicationId "com.ys.etv"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 14
-        versionName "V5.3.1.5"
+        versionCode 15
+        versionName "V5.3.1.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {

@@ -19,8 +19,6 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
         Log.i("BootBroadcastReceiver", "=ETV开机广播=============" + action);
         MyLog.cdl("开机广播====", true);
         if (action.equals(ACTION_BOOT)) {
-            SharedPerManager.setLastDownTraff(0);
-            SharedPerManager.setLastUploadTraff(0);
             openApp(context);
         }
     }
