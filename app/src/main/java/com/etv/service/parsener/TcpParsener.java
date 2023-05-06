@@ -2,12 +2,14 @@ package com.etv.service.parsener;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
 import com.etv.activity.model.RegisterDevListener;
 import com.etv.config.AppInfo;
 import com.etv.entity.BggImageEntity;
 import com.etv.entity.PowerOnOffEntity;
 import com.etv.entity.TimedTaskListEntity;
+import com.etv.listener.BitmapCaptureListener;
 import com.etv.listener.TaskChangeListener;
 import com.etv.service.listener.SysSettingAllInfoListener;
 import com.etv.service.listener.SysSettingAllViewInfoListener;
@@ -20,6 +22,7 @@ import com.etv.service.view.TcpPowerOnOffListener;
 import com.etv.util.Biantai;
 import com.etv.util.MyLog;
 import com.etv.util.NetWorkUtils;
+import com.etv.util.ScreenUtil;
 import com.etv.util.SimpleDateUtil;
 import com.etv.util.rxjava.AppStatuesListener;
 import com.etv.util.sdcard.FileFilter;
@@ -166,18 +169,16 @@ public class TcpParsener {
      * 上传截图，给服务器
      * @param tag
      */
-    public void updateImageToWeb(String tag) {
-        if (tag == null || tag.length() < 1) {
+    public void updateImageToWeb(String tag, String imagePath) {
+        if (TextUtils.isEmpty(imagePath)) {
             return;
         }
         try {
-            MyLog.update("==截图回来了==准备上传==" + tag);
-            if (tag.equals(AppInfo.TAG_UPDATE)) {
-                initOther();
-                tcpServerModule.monitorUpdateImage(context.getApplicationContext(), AppInfo.CAPTURE_MAIN);
-            }
+            MyLog.update("==截图回来了==准备上传==" + tag, true);
+            initOther();
+            tcpServerModule.monitorUpdateImage(context.getApplicationContext(), imagePath);
         } catch (Exception e) {
-            MyLog.update("==截图回来了==上传异常==" + e.toString());
+            MyLog.update("==截图回来了==上传异常==" + e.toString(), true);
             e.printStackTrace();
         }
     }
@@ -347,4 +348,19 @@ public class TcpParsener {
         });
         listener.updateTime();
     }
+
+    public void startCaptureImage() {
+        //新版本直接使用软件截图，旧版本使用守护进程进行截图
+        ScreenUtil.getScreenImage(context, AppInfo.TAG_UPDATE, new BitmapCaptureListener() {
+            @Override
+            public void backCaptureImage(boolean isSuccess, String imagePath) {
+                MyLog.update("截图完成，数据返回==" + isSuccess + " / " + imagePath);
+                if (!isSuccess) {
+                    return;
+                }
+                updateImageToWeb(AppInfo.TAG_UPDATE, AppInfo.CAPTURE_MAIN);
+            }
+        });
+    }
+
 }

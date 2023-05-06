@@ -277,7 +277,7 @@ public class GuardianUtil {
         }
         if (cpuModel.contains(CpuModel.CPU_MODEL_3568_11)
             || cpuModel.contains(CpuModel.CPU_RK_3566)) {
-            return new RawSourceEntity(R.raw.guardian_356x, 3206512, "3566-RK-11", 82);
+            return new RawSourceEntity(R.raw.guardian_356x, 3206494, "3566-RK-11", 83);
         }
         return null;
     }

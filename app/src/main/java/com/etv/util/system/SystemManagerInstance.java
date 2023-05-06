@@ -32,8 +32,12 @@ public class SystemManagerInstance {
     public SystemManagerInstance(Context context) {
         this.context = context;
         myManager = MyManager.getInstance(context);
+        myManager.bindAIDLService(context);
     }
 
+    public boolean screenShot(String savePath) {
+        return myManager.takeScreenshot(savePath);
+    }
 
     /***
      * 关机

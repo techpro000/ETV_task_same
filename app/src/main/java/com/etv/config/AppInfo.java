@@ -26,8 +26,6 @@ public class AppInfo {
     public static boolean isAppRun = false;
     //设备是否已经注册到服务器
     public static boolean isDevRegister = false;
-    //标记本次开机是否定位了，每次开机只定位一次
-    public static boolean isLocationSuccess = false;
     //标记是否同步了服务器时间
     public static boolean updateLocalTime = false;
 
@@ -49,8 +47,6 @@ public class AppInfo {
     public static final int MESSAGE_TYPE_WINCHAT_SOFT = 4000;
     //设备端用来检查心跳得回收消息
     public static final int SERVER_BACK_DEV_IS_ONLINE = 4002;
-    //发送指令给服务器，心跳包
-
 
     //同步通讯方式
     public static final int MESSAGE_TYPE_UDP = 0;  //局域网信号传输
@@ -99,7 +95,6 @@ public class AppInfo {
     public static final int ORDER_CHANGE_DEV_TO_OTHER_USER = 5024;  //修改设备归属
     public static final int ORDER_UPDATE_WORK_INFO_TO_WEB = 5025;  //上传设备日志
     public static final int WET_SCAN_REGISTER_DEV_WEB = 5026;  //小程序扫码注册
-    public static final int ORDER_TTS_MESSAGE = 5027;  //TTS语音
     public static final int ORDER_MODIFY_SERVER = 5028;          //修改服务器配置选项
 
     //双屏显示类型
@@ -177,7 +172,6 @@ public class AppInfo {
     public static String APK_PATH() {
         return BASE_PATH() + "/apk";
     }
-
 
     public static String LINE_SCREEN_PATH() {
         return BASE_PATH() + "/line";

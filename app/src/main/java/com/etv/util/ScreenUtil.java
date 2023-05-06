@@ -7,8 +7,11 @@ import android.os.Build;
 import com.EtvApplication;
 import com.etv.config.AppInfo;
 import com.etv.entity.ScreenEntity;
+import com.etv.listener.BitmapCaptureListener;
 import com.etv.util.guardian.GuardianUtil;
+import com.etv.util.rxjava.AppStatuesListener;
 import com.etv.util.system.CpuModel;
+import com.etv.util.system.SystemManagerInstance;
 
 import java.util.List;
 
@@ -20,22 +23,30 @@ public class ScreenUtil {
      * @param context
      * @param tag
      */
-    public static void getScreenImage(Context context, String tag) {
+    public static void getScreenImage(Context context, String tag, BitmapCaptureListener listener) {
+        int screenWidth = SharedPerManager.getScreenWidth();
+        int screenHeight = SharedPerManager.getScreenHeight();
         String cpuMudel = CpuModel.getMobileType();
-        //判断是否是4.4的3128
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            if (cpuMudel.contains("rk312x")) {
-                deal312844ScreenInfo(context, tag);
-                return;
-            }
-        }
-        if (cpuMudel.contains("smd") || cpuMudel.contains("msm")) {
+        if (cpuMudel.startsWith(CpuModel.CPU_MODEL_RK_3128)) {
+            //3128 截图
             deal312844ScreenInfo(context, tag);
             return;
         }
-        int screenWidth = SharedPerManager.getScreenWidth();
-        int screenHeight = SharedPerManager.getScreenHeight();
+        if (cpuMudel.startsWith(CpuModel.CPU_RK_3566)
+            || cpuMudel.startsWith(CpuModel.CPU_MODEL_3568_11)) {
+            //3566软件截图
+            get356xCatptureImage(context, listener);
+            return;
+        }
+        //旧版本使用守护进程截图
         GuardianUtil.getCaptureImage(context, screenWidth, screenHeight, tag);
+    }
+
+    private static void get356xCatptureImage(Context context, BitmapCaptureListener listener) {
+        FileUtil.creatPathNotExcit("开始截图");
+        MyLog.update("=截图=3566=开始截图==");
+        boolean isSuccess = SystemManagerInstance.getInstance(context).screenShot(AppInfo.CAPTURE_MAIN);
+        listener.backCaptureImage(isSuccess, AppInfo.CAPTURE_MAIN);
     }
 
     private static void deal312844ScreenInfo(Context context, String tag) {

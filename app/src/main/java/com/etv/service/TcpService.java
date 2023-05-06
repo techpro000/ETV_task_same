@@ -13,7 +13,6 @@ import android.os.Message;
 import com.EtvApplication;
 import com.etv.activity.ClearCacheActivity;
 import com.etv.activity.MainActivity;
-import com.etv.activity.TimerReduceActivity;
 import com.etv.activity.model.RegisterDevListener;
 import com.etv.config.AppConfig;
 import com.etv.config.AppInfo;
@@ -39,8 +38,6 @@ import com.etv.util.SharedPerManager;
 import com.etv.util.SharedPerUtil;
 import com.etv.util.SimpleDateUtil;
 import com.etv.util.rxjava.AppStatuesListener;
-import com.etv.util.rxjava.RxBus;
-import com.etv.util.rxjava.event.RxEvent;
 import com.etv.util.system.PowerOnOffUtil;
 import com.etv.util.system.SystemManagerInstance;
 import com.etv.util.system.SystemManagerUtil;
@@ -51,7 +48,6 @@ import org.java_websocket.enums.ReadyState;
 import org.json.JSONObject;
 
 import java.util.Random;
-
 
 /**
  * TCP sock长连接连接，消息接受后台
@@ -105,7 +101,7 @@ public class TcpService extends Service implements SocketWebListener {
             String tag = intent.getStringExtra("tag");
             MyLog.update("==截图回来了==准备上传==" + tag);
             initOther();
-            tcpParsener.updateImageToWeb(tag);
+            tcpParsener.updateImageToWeb(tag, AppInfo.CAPTURE_MAIN);
         } catch (Exception e) {
             MyLog.update("==截图回来了==上传异常==" + e.toString());
             e.printStackTrace();
@@ -145,7 +141,6 @@ public class TcpService extends Service implements SocketWebListener {
     private static final int CLEAT_SD_CACHE_INFO = 5651;        //清理磁盘
     private static final int GO_TO_ACTIVITY = 5652;
     private static final int SHOW_TOAST_VIEW = 5653;
-    private static final int MONITOR_VIEW_TO_WEB = 5654;        //提交屏幕截图到服务器
     private static final int STOP_DOWN_TASK_AND_CLEAR = 5655;  //清理任务
     private static final int UPDATE_APK_IMG_INFO = 5656;  //升级APK，固件信息
     private static final int STOP_TASK_DOWN_INFO = 5657;  //请求任务前把正在下载的中止掉，防止多次重复下载
@@ -244,11 +239,6 @@ public class TcpService extends Service implements SocketWebListener {
                     sendBroadCastToView(AppInfo.STOP_DOWN_TASK_RECEIVER);   // 清理下载任务
                     MyLog.cdl("=========TaskCacheActivity====STOP_DOWN_TASK_AND_CLEAR");
                     gotoActivity(MainActivity.class);
-                    break;
-                case MONITOR_VIEW_TO_WEB:   //上传截图界面到VIEw
-                    ScreenUtil.getScreenImage(TcpService.this, AppInfo.TAG_UPDATE);
-//                    initOther();
-//                    tcpServerModule.monitorUpdateImage(getApplicationContext(),AppInfo.CAPTURE_PATH);
                     break;
                 case SHOW_TOAST_VIEW:          //弹窗提示
                     String toast = (String) msg.obj;
@@ -529,7 +519,13 @@ public class TcpService extends Service implements SocketWebListener {
                     handler.sendEmptyMessage(CHECK_POWER_ON_OFF);
                     break;
                 case AppInfo.ORDER_MONITOR: //监控
-                    handler.sendEmptyMessage(MONITOR_VIEW_TO_WEB);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            initOther();
+                            tcpParsener.startCaptureImage();
+                        }
+                    });
                     break;
                 case AppInfo.ORDER_WORK:   //接受获取任务的指令
                     //接受新任务，直接停止下载，请求新任务
